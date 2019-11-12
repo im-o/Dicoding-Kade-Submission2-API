@@ -22,7 +22,8 @@ import java.lang.Exception
  * Created by rivaldy on 11/10/2019.
  */
 
-class HomeAdapter(val items: ArrayList<Leagues>): RecyclerView.Adapter<HomeAdapter.HomeAdapterViewHolder>() {
+class HomeAdapter(val items: ArrayList<Leagues>, val listener: (Leagues) -> Unit): RecyclerView.Adapter<HomeAdapter.HomeAdapterViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeAdapterViewHolder {
         return HomeAdapterViewHolder(ItemLeaguesUI().createView(AnkoContext.Companion.create(parent.context, parent)))
     }
@@ -32,7 +33,7 @@ class HomeAdapter(val items: ArrayList<Leagues>): RecyclerView.Adapter<HomeAdapt
     }
 
     override fun onBindViewHolder(holder: HomeAdapterViewHolder, position: Int) {
-        holder.bindItem(items[position])
+        holder.bindItem(items[position], listener)
     }
 
     class HomeAdapterViewHolder(view: View): RecyclerView.ViewHolder(view) {
@@ -40,17 +41,12 @@ class HomeAdapter(val items: ArrayList<Leagues>): RecyclerView.Adapter<HomeAdapt
         private val ligaDesc: TextView = view.find(R.id.liga_desc)
         private val ligaImg: ImageView = view.find(R.id.liga_img)
         private val progressBar: ProgressBar = view.find(R.id.liga_progress)
+        private val card: CardView = view.find(R.id.liga_cardv)
 
-        fun bindItem(leagues: Leagues) {
+        fun bindItem(leagues: Leagues, listener: (Leagues) -> Unit) {
             val strUrl = "${leagues.strBadge}/preview"
             ligaName.text = leagues.strLeague
             ligaDesc.text = leagues.strDescriptionEN
-//            Glide.with(itemView.context)
-//                .load(strUrl)
-//                .into(ligaImg)
-////            itemView.setOnClickListener {
-////                listener(itemLeagues)
-////            }
             Picasso.get().load(strUrl).fit().into(ligaImg, object : Callback{
                 override fun onSuccess() {
                     progressBar.invisible()
@@ -61,6 +57,9 @@ class HomeAdapter(val items: ArrayList<Leagues>): RecyclerView.Adapter<HomeAdapt
                 }
 
             })
+            card.setOnClickListener {
+                listener(leagues)
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ import com.stimednp.kadesubmission2.R
 import com.stimednp.kadesubmission2.R.color.*
 import com.stimednp.kadesubmission2.model.Leagues
 import com.stimednp.kadesubmission2.ui.adapter.HomeAdapter
+import com.stimednp.kadesubmission2.ui.xml.DetailsActivity
 import org.jetbrains.anko.*
 import org.jetbrains.anko.design.coordinatorLayout
 import org.jetbrains.anko.design.themedAppBarLayout
@@ -21,7 +22,6 @@ import org.jetbrains.anko.support.v4.swipeRefreshLayout
 class MainUI(val items: ArrayList<Leagues>) : AnkoComponent<MainActivity> {
     override fun createView(ui: AnkoContext<MainActivity>) = with(ui) {
         coordinatorLayout {
-            //            backgroundColor = getColor(context, colorPrimaryDark)
             lparams(matchParent, matchParent)
             fitsSystemWindows = true
             themedAppBarLayout(R.style.AppTheme_AppBarOverlay) {
@@ -48,7 +48,10 @@ class MainUI(val items: ArrayList<Leagues>) : AnkoComponent<MainActivity> {
                             id = R.id.rv_main
                             lparams(matchParent, matchParent)
                             layoutManager = LinearLayoutManager(context)
-                            adapter = HomeAdapter(items)
+                            adapter = HomeAdapter(items){
+                                toast("Hasil : ${it.strLeague}")
+                                startActivity<DetailsActivity>()
+                            }
 //                        LeagueAdapter(items) {
 //                            startActivity<DetailActivity>(DetailActivity.EXTRA_DATA to it)
 //                        }
