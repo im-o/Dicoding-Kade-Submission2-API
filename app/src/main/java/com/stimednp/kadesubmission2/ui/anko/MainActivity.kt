@@ -1,18 +1,14 @@
 package com.stimednp.kadesubmission2.ui.anko
 
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log.e
-import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
-import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.stimednp.kadesubmission2.CustomesUI.showProgress
+import com.stimednp.kadesubmission2.CustomesUI.showProgressDialog
 import com.stimednp.kadesubmission2.R
 import com.stimednp.kadesubmission2.api.ApiClient
-import com.stimednp.kadesubmission2.invisible
 import com.stimednp.kadesubmission2.model.Leagues
-import com.stimednp.kadesubmission2.ui.anko.MainUI.Companion.progress
 import com.stimednp.kadesubmission2.ui.anko.MainUI.Companion.rv_main
 import com.stimednp.kadesubmission2.ui.anko.MainUI.Companion.swipeRefresh
 import kotlinx.coroutines.Dispatchers
@@ -25,14 +21,30 @@ import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
     var leagueList = ArrayList<Leagues>()
+    var leagueAddto = ArrayList<Leagues>()
+    lateinit var tvProgress: TextView
+    lateinit var strProgress: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         MainUI(leagueList).setContentView(this)
+        showProgressDialog(this)
+        tvProgress = showProgress.find(R.id.tv_progress_cust)
+        strProgress = getString(R.string.str_progress)
+        showDataProgress()
+
         getIdListLeague()
         swipeRefresh.onRefresh {
             getDataApi()
+            if (!showProgress.isShowing){
+                showDataProgress()
+            }
         }
+    }
+
+    private fun showDataProgress() {
+        tvProgress.setText(strProgress)
+        showProgress.show()
     }
 
     private fun getIdListLeague() {
@@ -45,22 +57,21 @@ class MainActivity : AppCompatActivity() {
                 setById(responseBody?.leagues!!)
             } catch (er: Exception) {
                 e("INIII", "Error getDataById ${er.message}")
-                progress.invisible()
             }
         }
     }
 
-    private fun getDataById(id: Int) {
+    private fun getDataById(id: Int, size: Int) {
         val tsdbService = ApiClient.iServiceTsdb
         GlobalScope.launch(Dispatchers.Main) {
             val listIdLeagues = tsdbService.getDetailById(id)
             try {
                 val respose = listIdLeagues.await()
                 val responseBody = respose.body()
-                setAdapter(responseBody?.leagues!!)
+//                setAdapter(responseBody?.leagues!!, position)
+                addToList(responseBody?.leagues!!, size)
             } catch (er: Exception) {
                 e("INIII", "Error getDataById ${er.message}")
-                progress.invisible()
             }
         }
     }
@@ -74,30 +85,40 @@ class MainActivity : AppCompatActivity() {
         }
         for (i in listIdLeagues.indices) {
             val id = listIdLeagues.get(i)
-            e("INIII","LOAD DATA --> $i")
-            getDataById(id)
+            e("INIII", "LOAD DATA --> $i")
+            getDataById(id, listIdLeagues.size)
         }
     }
 
-    fun getDataApi(){
-        if (leagueList.size > 0){
+    fun getDataApi() {
+        if (leagueList.size > 0) {
             leagueList.clear()
             rv_main.adapter?.notifyDataSetChanged()
             getIdListLeague()
             toast("load refersh")
         }
     }
+
+    fun addToList(leagues: ArrayList<Leagues>, size: Int) {
+        val strProg = ("$strProgress ${leagueAddto.size} of $size")
+        leagueAddto.addAll(leagues)
+        tvProgress.setText(strProg)
+        e("INIII", "SIEEE : ${leagueAddto.size}")
+        if (leagueAddto.size == size) {
+            toast("STOOOPP SAMA ${leagueAddto.size}")
+            setAdapter(leagueAddto)
+            leagueAddto.clear()
+        }
+    }
+
     private fun setAdapter(leagues: ArrayList<Leagues>) {
         leagueList.addAll(leagues)
         rv_main.adapter?.notifyDataSetChanged()
-        if (swipeRefresh.isRefreshing){
-            val handler =  Handler()
-            handler.postDelayed({
-                if (progress.isVisible){
-                    progress.invisible()
-                }
-                swipeRefresh.isRefreshing = false
-            },3000)
+        if (swipeRefresh.isRefreshing) {
+            swipeRefresh.isRefreshing = false
+        }
+        if (showProgress.isShowing){
+            showProgress.dismiss()
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.stimednp.kadesubmission2.ui.anko
 
 import android.widget.LinearLayout
-import android.widget.ProgressBar
 import android.widget.Toolbar
 import androidx.core.content.ContextCompat.getColor
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,7 +25,6 @@ import org.jetbrains.anko.support.v4.swipeRefreshLayout
 class MainUI(val items: ArrayList<Leagues>) : AnkoComponent<MainActivity> {
     companion object {
         lateinit var rv_main: RecyclerView
-        lateinit var progress: ProgressBar
         lateinit var swipeRefresh: SwipeRefreshLayout
         lateinit var toolbar_main: Toolbar
     }
@@ -55,20 +53,13 @@ class MainUI(val items: ArrayList<Leagues>) : AnkoComponent<MainActivity> {
                         colorPrimary,
                         colorTransparantBlack
                     )
-                    relativeLayout {
-                        rv_main = recyclerView {
-                            id = R.id.rv_main
-                            lparams(matchParent, matchParent)
-                            layoutManager = LinearLayoutManager(context)
-                            adapter = HomeAdapter(items) {
-                                toast("Hasil : ${it.strLeague}")
-                                startActivity<DetailsActivity>()
-                            }
-                        }
-                        progress = progressBar {
-                            id = R.id.progress_main
-                        }.lparams {
-                            centerInParent()
+                    rv_main = recyclerView {
+                        id = R.id.rv_main
+                        lparams(matchParent, matchParent)
+                        layoutManager = LinearLayoutManager(context)
+                        adapter = HomeAdapter(items) {
+                            toast("Hasil : ${it.strLeague}")
+                            startActivity<DetailsActivity>()
                         }
                     }
                 }.lparams(matchParent, matchParent)
