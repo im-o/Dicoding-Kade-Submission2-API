@@ -1,8 +1,12 @@
 package com.stimednp.kadesubmission2.ui.anko
 
 import android.widget.LinearLayout
+import android.widget.ProgressBar
+import android.widget.Toolbar
 import androidx.core.content.ContextCompat.getColor
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.appbar.AppBarLayout
 import com.stimednp.kadesubmission2.R
 import com.stimednp.kadesubmission2.R.color.*
@@ -20,12 +24,19 @@ import org.jetbrains.anko.support.v4.swipeRefreshLayout
  */
 
 class MainUI(val items: ArrayList<Leagues>) : AnkoComponent<MainActivity> {
+    companion object {
+        lateinit var rv_main: RecyclerView
+        lateinit var progress: ProgressBar
+        lateinit var swipeRefresh: SwipeRefreshLayout
+        lateinit var toolbar_main: Toolbar
+    }
+
     override fun createView(ui: AnkoContext<MainActivity>) = with(ui) {
         coordinatorLayout {
             lparams(matchParent, matchParent)
             fitsSystemWindows = true
             themedAppBarLayout(R.style.AppTheme_AppBarOverlay) {
-                toolbar {
+                toolbar_main = toolbar {
                     title = resources.getString(R.string.app_title)
                     backgroundColor = getColor(context, colorPrimaryToolbar)
                 }.lparams(matchParent, wrapContent) {
@@ -35,8 +46,9 @@ class MainUI(val items: ArrayList<Leagues>) : AnkoComponent<MainActivity> {
             }.lparams(matchParent, wrapContent)
             verticalLayout {
                 orientation = LinearLayout.VERTICAL
-                swipeRefreshLayout {
+                swipeRefresh = swipeRefreshLayout {
                     id = R.id.swipe_main
+                    isRefreshing = true
                     setColorSchemeResources(
                         colorAccent,
                         colorTextGrey,
@@ -44,21 +56,18 @@ class MainUI(val items: ArrayList<Leagues>) : AnkoComponent<MainActivity> {
                         colorTransparantBlack
                     )
                     relativeLayout {
-                        recyclerView {
+                        rv_main = recyclerView {
                             id = R.id.rv_main
                             lparams(matchParent, matchParent)
                             layoutManager = LinearLayoutManager(context)
-                            adapter = HomeAdapter(items){
+                            adapter = HomeAdapter(items) {
                                 toast("Hasil : ${it.strLeague}")
                                 startActivity<DetailsActivity>()
                             }
-//                        LeagueAdapter(items) {
-//                            startActivity<DetailActivity>(DetailActivity.EXTRA_DATA to it)
-//                        }
                         }
-                        progressBar {
+                        progress = progressBar {
                             id = R.id.progress_main
-                        }.lparams{
+                        }.lparams {
                             centerInParent()
                         }
                     }

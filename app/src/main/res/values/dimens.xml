@@ -9,4 +9,5 @@
     <dimen name="size_text_small_low">8sp</dimen>
     <dimen name="size_corner_low">8dp</dimen>
     <dimen name="appbar_size">55dp</dimen>
+    <dimen name="activity_margin_content">16dp</dimen>
 </resources>

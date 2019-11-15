@@ -1,0 +1,34 @@
+package com.stimednp.kadesubmission2.ui.adapter
+
+import android.content.Context
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import com.stimednp.kadesubmission2.R
+import com.stimednp.kadesubmission2.ui.fragment.LastMatchFragment
+import com.stimednp.kadesubmission2.ui.fragment.NextMatchFragment
+
+/**
+ * Created by rivaldy on 11/13/2019.
+ */
+
+class ViewPagerAdapter(fm: FragmentManager, context: Context): FragmentPagerAdapter(fm) {
+    private val strTab0 = context.getString(R.string.str_last_match)
+    private val strTab1 = context.getString(R.string.str_next_match)
+    private val pages = listOf(LastMatchFragment(), NextMatchFragment())
+
+    override fun getItem(position: Int): Fragment {
+        return pages[position]
+    }
+
+    override fun getCount(): Int {
+        return pages.size
+    }
+
+    override fun getPageTitle(position: Int): CharSequence? {
+        return when(position){
+            0 -> strTab0
+            else -> strTab1
+        }
+    }
+}
