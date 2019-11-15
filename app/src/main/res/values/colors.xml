@@ -4,12 +4,12 @@
 <!--    <color name="colorPrimaryDark">#512DA8</color>-->
 <!--    <color name="colorAccent">#7C4DFF</color>-->
 
-    <color name="colorPrimary">#05220B</color>
+    <color name="colorPrimary">#063510</color>
     <color name="colorPrimaryDark">#010E03</color>
     <color name="colorAccent">#C6C519</color>
     <color name="colorButton">#C52D2F</color>
     <color name="colorPrimaryLight">#B2DFDB</color>
-    <color name="colorPrimaryToolbar">#031406</color>
+    <color name="colorPrimaryToolbar">#05220B</color>
     <color name="colorTextGrey">#BF535353</color>
     <color name="colorTextIcon">#FFFFFF</color>
     <color name="colorTransparant">#00000000</color>

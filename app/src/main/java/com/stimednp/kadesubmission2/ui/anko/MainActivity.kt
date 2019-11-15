@@ -20,11 +20,12 @@ import org.jetbrains.anko.find
 import org.jetbrains.anko.longToast
 import org.jetbrains.anko.setContentView
 import org.jetbrains.anko.support.v4.onRefresh
+import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
     var leagueList = ArrayList<Leagues>()
     var leagueAddto = ArrayList<Leagues>()
-    var sizeList: Int = 0
+    var sizeListId: Int = 0
     lateinit var tvProgress: TextView
     lateinit var strProgress: String
 
@@ -61,14 +62,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getDataById(id: Int, size: Int) {
+    private fun getDataById(id: Int) {
         val tsdbService = ApiClient.iServiceTsdb
         GlobalScope.launch(Dispatchers.Main) {
             val listIdLeagues = tsdbService.getDetailById(id)
             try {
                 val respose = listIdLeagues.await()
                 val responseBody = respose.body()
-                addToList(responseBody?.leagues!!, size)
+                addToList(responseBody?.leagues!!)
             } catch (er: Exception) {
                 e("INIII", "Error getDataById ${er.message}")
             }
@@ -77,38 +78,40 @@ class MainActivity : AppCompatActivity() {
 
     private fun setById(leagues: ArrayList<Leagues>) {
         val listIdLeagues: MutableList<Int> = ArrayList()
+        sizeListId = leagues.size
         for (i in leagues.indices) {
             val id: Int = leagues[i].idLeague!!.toInt()
             listIdLeagues.add(id)
         }
         for (i in listIdLeagues.indices) {
             val id = listIdLeagues.get(i)
-            getDataById(id, listIdLeagues.size)
+            getDataById(id)
         }
     }
 
     fun getDataApi() {
-        if (leagueAddto.size >= sizeList) {
+        if (leagueAddto.size >= sizeListId) {
             setAdapter(leagueAddto)
         } else {
             getIdListLeague()
         }
     }
 
-    fun addToList(leagues: ArrayList<Leagues>, size: Int) {
-        val strProg = ("$strProgress ${leagueAddto.size} of $size")
+    fun addToList(leagues: ArrayList<Leagues>) {
+        val strProg = ("$strProgress ${leagueAddto.size} of $sizeListId")
         leagueAddto.addAll(leagues)
         tvProgress.setText(strProg)
 
-        if (leagueAddto.size == size) {
+        if (leagueAddto.size == sizeListId) {
             tv_nodata.invisible()
             setAdapter(leagueAddto)
-            longToast("${getString(R.string.str_loadsucces)} $size")
+            longToast("${getString(R.string.str_loadsucces)} $sizeListId")
 //            leagueAddto.clear()
         }
     }
 
     private fun setAdapter(leagues: ArrayList<Leagues>) {
+        toast("sizee : $sizeListId")
         if (swipeRefresh.isRefreshing) {
             swipeRefresh.isRefreshing = false
         }
@@ -116,7 +119,6 @@ class MainActivity : AppCompatActivity() {
             showProgress.dismiss()
         }
         leagueList.clear()
-        sizeList = leagues.size
         leagueList.addAll(leagues)
         rv_main.adapter?.notifyDataSetChanged()
     }
