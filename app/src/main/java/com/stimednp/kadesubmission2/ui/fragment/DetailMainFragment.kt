@@ -2,14 +2,11 @@ package com.stimednp.kadesubmission2.ui.fragment
 
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.stimednp.kadesubmission2.R
 import com.stimednp.kadesubmission2.ui.adapter.ViewPagerAdapter
 import kotlinx.android.synthetic.main.fragment_detail_main.*
-import org.jetbrains.anko.support.v4.find
 
 /**
  * A simple [Fragment] subclass.

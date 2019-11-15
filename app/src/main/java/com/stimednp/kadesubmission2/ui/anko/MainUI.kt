@@ -1,6 +1,9 @@
 package com.stimednp.kadesubmission2.ui.anko
 
-import android.widget.LinearLayout
+import android.graphics.Typeface
+import android.view.Gravity
+import android.view.View
+import android.widget.TextView
 import android.widget.Toolbar
 import androidx.core.content.ContextCompat.getColor
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +15,7 @@ import com.stimednp.kadesubmission2.R.color.*
 import com.stimednp.kadesubmission2.model.Leagues
 import com.stimednp.kadesubmission2.ui.adapter.HomeAdapter
 import com.stimednp.kadesubmission2.ui.xml.DetailsActivity
+import com.stimednp.kadesubmission2.visible
 import org.jetbrains.anko.*
 import org.jetbrains.anko.design.coordinatorLayout
 import org.jetbrains.anko.design.themedAppBarLayout
@@ -25,44 +29,51 @@ import org.jetbrains.anko.support.v4.swipeRefreshLayout
 class MainUI(val items: ArrayList<Leagues>) : AnkoComponent<MainActivity> {
     companion object {
         lateinit var rv_main: RecyclerView
+        lateinit var tv_nodata: TextView
         lateinit var swipeRefresh: SwipeRefreshLayout
         lateinit var toolbar_main: Toolbar
     }
 
-    override fun createView(ui: AnkoContext<MainActivity>) = with(ui) {
+    override fun createView(ui: AnkoContext<MainActivity>): View = with(ui) {
         coordinatorLayout {
             lparams(matchParent, matchParent)
             fitsSystemWindows = true
+
             themedAppBarLayout(R.style.AppTheme_AppBarOverlay) {
                 toolbar_main = toolbar {
                     title = resources.getString(R.string.app_title)
                     backgroundColor = getColor(context, colorPrimaryToolbar)
                 }.lparams(matchParent, wrapContent) {
-                    scrollFlags =
-                        AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
+                    scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
                 }
             }.lparams(matchParent, wrapContent)
-            verticalLayout {
-                orientation = LinearLayout.VERTICAL
-                swipeRefresh = swipeRefreshLayout {
-                    id = R.id.swipe_main
-                    isRefreshing = true
-                    setColorSchemeResources(
-                        colorAccent,
-                        colorTextGrey,
-                        colorPrimary,
-                        colorTransparantBlack
-                    )
+
+            swipeRefresh = swipeRefreshLayout {
+                id = R.id.swipe_main
+                isRefreshing = true
+                setColorSchemeResources(colorAccent, colorTextGrey, colorPrimary, colorTransparantBlack)
+                relativeLayout {
+                    lparams(matchParent, matchParent)
                     rv_main = recyclerView {
                         id = R.id.rv_main
                         lparams(matchParent, matchParent)
+                        setHasFixedSize(true)
                         layoutManager = LinearLayoutManager(context)
                         adapter = HomeAdapter(items) {
                             toast("Hasil : ${it.strLeague}")
                             startActivity<DetailsActivity>()
                         }
                     }
-                }.lparams(matchParent, matchParent)
+                    tv_nodata = textView {
+                        text = resources.getString(R.string.str_nodata)
+                        textColor = getColor(context, colorTextGrey)
+                        textSize = 32f
+                        typeface = Typeface.DEFAULT_BOLD
+                        textAlignment = View.TEXT_ALIGNMENT_CENTER
+                    }.lparams(matchParent, wrapContent){
+                        centerInParent()
+                    }
+                }
             }.lparams(matchParent, matchParent) {
                 behavior = AppBarLayout.ScrollingViewBehavior()
             }

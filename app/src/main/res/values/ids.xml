@@ -8,4 +8,5 @@
     <item name="progress_main" type="id" />
     <item name="liga_progress" type="id" />
     <item name="liga_cardv" type="id" />
+    <item name="coord_main" type="id" />
 </resources>
