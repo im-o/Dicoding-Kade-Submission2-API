@@ -20,7 +20,6 @@ import org.jetbrains.anko.find
 import org.jetbrains.anko.longToast
 import org.jetbrains.anko.setContentView
 import org.jetbrains.anko.support.v4.onRefresh
-import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
     var leagueList = ArrayList<Leagues>()
@@ -37,9 +36,6 @@ class MainActivity : AppCompatActivity() {
 
         swipeRefresh.onRefresh {
             getDataApi()
-            if (!showProgress.isShowing){
-                showDataProgress()
-            }
         }
     }
 
@@ -92,9 +88,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun getDataApi() {
-        if (leagueList.size > 0) {
+        if (leagueAddto.size >= sizeList) {
+            setAdapter(leagueAddto)
+        } else {
             getIdListLeague()
-            toast("load refersh ${sizeList}")
         }
     }
 
@@ -106,18 +103,18 @@ class MainActivity : AppCompatActivity() {
         if (leagueAddto.size == size) {
             tv_nodata.invisible()
             setAdapter(leagueAddto)
-            if (swipeRefresh.isRefreshing) {
-                swipeRefresh.isRefreshing = false
-            }
-            if (showProgress.isShowing) {
-                showProgress.dismiss()
-            }
             longToast("${getString(R.string.str_loadsucces)} $size")
-            leagueAddto.clear()
+//            leagueAddto.clear()
         }
     }
 
     private fun setAdapter(leagues: ArrayList<Leagues>) {
+        if (swipeRefresh.isRefreshing) {
+            swipeRefresh.isRefreshing = false
+        }
+        if (showProgress.isShowing) {
+            showProgress.dismiss()
+        }
         leagueList.clear()
         sizeList = leagues.size
         leagueList.addAll(leagues)
