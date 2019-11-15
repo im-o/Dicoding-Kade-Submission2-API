@@ -1,5 +1,6 @@
 package com.stimednp.kadesubmission2.ui.adapter
 
+import android.util.Log.e
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -33,7 +34,7 @@ class HomeAdapter(val items: ArrayList<Leagues>, val listener: (Leagues) -> Unit
     }
 
     override fun onBindViewHolder(holder: HomeAdapterViewHolder, position: Int) {
-        holder.bindItem(items[position], listener)
+        holder.bindItem(items[position], position, listener)
     }
 
     class HomeAdapterViewHolder(view: View): RecyclerView.ViewHolder(view) {
@@ -43,9 +44,10 @@ class HomeAdapter(val items: ArrayList<Leagues>, val listener: (Leagues) -> Unit
         private val progressBar: ProgressBar = view.find(R.id.liga_progress)
         private val card: CardView = view.find(R.id.liga_cardv)
 
-        fun bindItem(leagues: Leagues, listener: (Leagues) -> Unit) {
+        fun bindItem(leagues: Leagues, position: Int, listener: (Leagues) -> Unit) {
             val strUrl = "${leagues.strBadge}/preview"
-            ligaName.text = leagues.strLeague
+            val strName = "$position. ${leagues.strLeague}"
+            ligaName.text = strName
             ligaDesc.text = leagues.strDescriptionEN
             Picasso.get().load(strUrl).fit().into(ligaImg, object : Callback{
                 override fun onSuccess() {
