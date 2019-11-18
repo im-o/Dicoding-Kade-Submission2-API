@@ -16,4 +16,10 @@
     <color name="colorTransparant2">#4ABABAC0</color>
     <color name="colorTransparantBlack">#CC000000</color>
     <color name="colorTransparantBlackLowVery">#0D000000</color>
+    <color name="colorDivider">#EAE7EB</color>
+    <color name="colorDividerDark">#C9C6CA</color>
+    <color name="colorWeb">#1EB8C1</color>
+    <color name="colorYoutube">#FF0000</color>
+    <color name="colorFacebook">#3A559F</color>
+    <color name="colorTwitter">#50ABF1</color>
 </resources>

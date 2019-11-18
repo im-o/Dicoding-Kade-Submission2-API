@@ -33,5 +33,9 @@ interface IServiceTsdb {
 
     //search event / pertandingan
     @GET("api/v1/json/1/searchevents.php?")
-    fun getSearchEvent(@Query("e") query: String?): Deferred<Response<ResponseLeagues>>
+    fun getSearchEvent(@Query("e") e: String?): Deferred<Response<ResponseLeagues>>
+
+    //detail team
+    @GET("api/v1/json/1/lookupteam.php?")
+    fun getDetailTeam(@Query("id") id: Int?): Deferred<Response<ResponseLeagues>>
 }

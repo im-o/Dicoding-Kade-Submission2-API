@@ -1,7 +1,6 @@
 package com.stimednp.kadesubmission2.ui.anko
 
 import android.graphics.Typeface
-import android.view.Gravity
 import android.view.View
 import android.widget.TextView
 import android.widget.Toolbar
@@ -15,7 +14,6 @@ import com.stimednp.kadesubmission2.R.color.*
 import com.stimednp.kadesubmission2.model.Leagues
 import com.stimednp.kadesubmission2.ui.adapter.HomeAdapter
 import com.stimednp.kadesubmission2.ui.xml.DetailsActivity
-import com.stimednp.kadesubmission2.visible
 import org.jetbrains.anko.*
 import org.jetbrains.anko.design.coordinatorLayout
 import org.jetbrains.anko.design.themedAppBarLayout
@@ -60,8 +58,8 @@ class MainUI(val items: ArrayList<Leagues>) : AnkoComponent<MainActivity> {
                         setHasFixedSize(true)
                         layoutManager = LinearLayoutManager(context)
                         adapter = HomeAdapter(items) {
-                            toast("Hasil : ${it.strLeague}")
-                            startActivity<DetailsActivity>()
+//                            startActivity<Main2Activity>()
+                            startActivity<DetailsActivity>(DetailsActivity.EXTRA_DATA to it)
                         }
                     }
                     tv_nodata = textView {

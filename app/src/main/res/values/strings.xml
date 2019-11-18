@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name">KADE Submission 2</string>
     <string name="app_title">List Liga Indonesia</string>
+    <string name="app_detail_leagues">Details Leagues</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="todo">TODO</string>
-    
+
     <!-- all strings -->
     <string name="str_last_match">Last Match</string>
     <string name="str_next_match">Next Match</string>
@@ -14,4 +15,12 @@
     <string name="str_progress">Load data leagues,. </string>
     <string name="str_loadsucces">Complete load data</string>
     <string name="str_nodata">NOTHING LEAGUES DATA!</string>
+    <string name="tap_to_close">Tap twice for exit</string>
+
+    <string name="str_no_internet">No internet connection..</string>
+    <string name="str_try_again">Try Again</string>
+    <string name="str_reconnect">Connection to network..</string>
+    <string name="str_wrong_net">Network error eccurred..</string>
+    <string name="str_error_wrong">There is an error..</string>
+    <string name="str_doubledot">:</string>
 </resources>

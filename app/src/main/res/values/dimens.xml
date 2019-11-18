@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="activity_margin_vertical">16dp</dimen>
-    <dimen name="margin_size_low">8dp</dimen>
-    <dimen name="margin_size_low_small">3dp</dimen>
-    <dimen name="margin_size_normal">16dp</dimen>
-    <dimen name="size_text_normal">12sp</dimen>
-    <dimen name="size_text_low">10sp</dimen>
-    <dimen name="size_text_small_low">8sp</dimen>
-    <dimen name="size_corner_low">8dp</dimen>
-    <dimen name="appbar_size">55dp</dimen>
-    <dimen name="activity_margin_content">16dp</dimen>
+    <dimen name="space_16">16dp</dimen>
+    <dimen name="space_8">8dp</dimen>
+    <dimen name="space_3">3dp</dimen>
+    <dimen name="size_12">12sp</dimen>
+    <dimen name="size_10">10sp</dimen>
+    <dimen name="size_8">8sp</dimen>
+    <dimen name="size_6">6sp</dimen>
+    <dimen name="space_55">55dp</dimen>
 </resources>

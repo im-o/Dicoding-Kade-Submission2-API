@@ -12,11 +12,11 @@ class ResponseLeagues {
 }
 
 class ResponseEvents {
-    var leagues = ArrayList<Leagues>()
+    var events = ArrayList<Events>()
 }
 
-class ResponseDEvent {
-    var leagues = ArrayList<Leagues>()
+class ResponseTeams {
+    var teams = ArrayList<Teams>()
 }
 
 @Parcelize
@@ -36,11 +36,52 @@ data class Leagues(
     var strComplete: String?
 ) : Parcelable
 
-class Events {
-    var idEvent: String = ""
-    var idSoccerXML: String = ""
-    var strEvent: String = ""
-    var strSport: String = ""
-    var idLeague: String = ""
-    var strLeague: String = ""
-}
+@Parcelize
+data class Events(
+    var idEvent: String?,
+    var idLeague: String?,
+    var idHomeTeam: String?,
+    var idAwayTeam: String?,
+    var strEvent: String?,
+    var strSport: String?,
+    var strLeague: String?,
+    var strHomeTeam: String?,
+    var strAwayTeam: String?,
+    var intHomeScore: String?,
+    var intRound: Int?,
+    var intAwayScore: Int?,
+    var intSpectators: Int?,
+    var strHomeGoalDetails: String?,
+
+    var strHomeRedCards: String?,
+    var strHomeYellowCards: String?,
+    var strHomeLineupGoalkeeper: String?,
+    var strHomeLineupDefense: String?,
+    var strHomeLineupMidfield: String?,
+    var strHomeLineupForward: String?,
+    var strHomeLineupSubstitutes: String?,
+    var strHomeFormation: String?,
+
+    var strAwayRedCards: String?,
+    var strAwayYellowCards: String?,
+    var strAwayGoalDetails: String?,
+    var strAwayLineupGoalkeeper: String?,
+    var strAwayLineupMidfield: String?,
+    var strAwayLineupForward: String?,
+    var strAwayLineupSubstitutes: String?,
+    var strAwayFormation: String?,
+
+    var intHomeShots: Int?,
+    var intAwayShots: Int?,
+    var dateEvent: String?,
+    var strDate: String?,
+    var strTime: String?,
+    var strThumb: String?,
+    var strVideo: String?
+) : Parcelable
+
+@Parcelize
+data class Teams(
+    var idTeam: Int?,
+    var strTeamBadge: String?
+    ) : Parcelable

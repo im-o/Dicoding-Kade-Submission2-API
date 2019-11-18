@@ -12,7 +12,7 @@ import com.stimednp.kadesubmission2.ui.fragment.NextMatchFragment
  * Created by rivaldy on 11/13/2019.
  */
 
-class ViewPagerAdapter(fm: FragmentManager, context: Context): FragmentPagerAdapter(fm) {
+class ViewPagerAdapter(fm: FragmentManager, context: Context): FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     private val strTab0 = context.getString(R.string.str_last_match)
     private val strTab1 = context.getString(R.string.str_next_match)
     private val pages = listOf(LastMatchFragment(), NextMatchFragment())
