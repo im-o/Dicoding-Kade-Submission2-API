@@ -88,31 +88,22 @@
             app:layout_constraintBottom_toBottomOf="@+id/textView4"
             app:layout_constraintEnd_toStartOf="@+id/textView4"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/cardView2"
+            app:layout_constraintStart_toEndOf="@+id/imgv_hometeam"
             app:layout_constraintTop_toTopOf="@+id/textView4"
-            tools:text="10" />
+            tools:text="99" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView2"
-            android:layout_width="60dp"
+        <ImageView
+            android:id="@+id/imgv_hometeam"
+            android:layout_width="70dp"
             android:layout_height="80dp"
             android:layout_marginTop="@dimen/space_8"
-            app:cardBackgroundColor="@color/colorTextGrey"
-            app:cardCornerRadius="@dimen/space_8"
+            android:contentDescription="@string/todo"
+            android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="@+id/textView4"
             app:layout_constraintEnd_toEndOf="@+id/tv_hometeam"
             app:layout_constraintStart_toStartOf="@+id/tv_hometeam"
-            app:layout_constraintTop_toTopOf="@+id/textView4">
-
-            <ImageView
-                android:id="@+id/imgv_hometeam"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="6dp"
-                android:contentDescription="@string/todo"
-                android:scaleType="fitCenter"
-                tools:src="@color/colorAccent" />
-        </androidx.cardview.widget.CardView>
+            app:layout_constraintTop_toTopOf="@id/textView4"
+            tools:src="@drawable/english_premier_league" />
 
         <TextView
             android:id="@+id/tv_hometeam"
@@ -129,7 +120,7 @@
             app:layout_constraintEnd_toStartOf="@+id/textView4"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView2"
+            app:layout_constraintTop_toBottomOf="@+id/imgv_hometeam"
             tools:text="Orlando Magic" />
 
         <TextView
@@ -142,32 +133,22 @@
             android:textColor="@color/colorTextIcon"
             android:textSize="40sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView4"
-            app:layout_constraintEnd_toStartOf="@+id/cardtim_badge"
+            app:layout_constraintEnd_toStartOf="@+id/imgv_awayteam"
             app:layout_constraintStart_toEndOf="@+id/textView4"
             app:layout_constraintTop_toTopOf="@+id/textView4"
             tools:text="11" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardtim_badge"
-            android:layout_width="60dp"
+        <ImageView
+            android:id="@+id/imgv_awayteam"
+            android:layout_width="70dp"
             android:layout_height="80dp"
-            android:layout_marginTop="@dimen/space_8"
-            app:cardBackgroundColor="@color/colorTextGrey"
-            app:cardCornerRadius="@dimen/space_8"
+            android:contentDescription="@string/todo"
+            android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="@+id/textView4"
             app:layout_constraintEnd_toEndOf="@+id/tv_awayteam"
             app:layout_constraintStart_toStartOf="@+id/tv_awayteam"
-            app:layout_constraintTop_toTopOf="@+id/textView4">
-
-            <ImageView
-                android:id="@+id/imgv_awayteam"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="6dp"
-                android:contentDescription="@string/todo"
-                android:scaleType="fitCenter"
-                tools:src="@color/colorAccent" />
-        </androidx.cardview.widget.CardView>
+            app:layout_constraintTop_toTopOf="@+id/textView4"
+            tools:src="@drawable/english_premier_league" />
 
         <TextView
             android:id="@+id/tv_awayteam"
@@ -184,7 +165,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/cardtim_badge"
+            app:layout_constraintTop_toBottomOf="@+id/imgv_awayteam"
             tools:text="San Antonio Spurs" />
 
         <TextView

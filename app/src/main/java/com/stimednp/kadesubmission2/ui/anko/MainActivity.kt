@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
     private fun filterList(leagues: java.util.ArrayList<Leagues>) { //loop stop after size == leagues.size
         items.addAll(leagues)
         if (sizeListId > 20){
-            e("INIII","UKURAN : ${items.size}")
+//            e("INIII","UKURAN : ${items.size}")
 //            toast("size ${leagues.size}")
             sizeLen = sizeLen+1
             if (items.size == 20){
@@ -144,15 +144,6 @@ class MainActivity : AppCompatActivity() {
 //            leagueAddto.clear()
         }
     }
-
-    private fun setAdapter(leagues: ArrayList<Leagues>) {
-//        toast("sizee : $sizeListId")
-        disableProgress()
-//        leagueList.clear()
-        leagueList.addAll(leagues)
-        rv_main.adapter?.notifyDataSetChanged()
-    }
-
     override fun onBackPressed() {
         val strClose = resources.getString(R.string.tap_to_close)
         if (isBackPress) {
@@ -176,4 +167,13 @@ class MainActivity : AppCompatActivity() {
             showProgress.dismiss()
         }
     }
+
+    private fun setAdapter(leagues: ArrayList<Leagues>) {
+//        toast("sizee : $sizeListId")
+        disableProgress()
+//        leagueList.clear()
+        leagueList.addAll(leagues)
+        rv_main.adapter?.notifyDataSetChanged()
+    }
+
 }

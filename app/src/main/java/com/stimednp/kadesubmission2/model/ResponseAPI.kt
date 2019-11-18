@@ -12,11 +12,14 @@ class ResponseLeagues {
 }
 
 class ResponseEvents {
-    var events = ArrayList<Events>()
+    var events = ArrayList<EventsLeagues>()
 }
 
-class ResponseTeams {
-    var teams = ArrayList<Teams>()
+class ResponseTeamsH {
+    var teams = ArrayList<TeamsBadgeH>()
+}
+class ResponseTeamsA {
+    var teams = ArrayList<TeamsBadgeA>()
 }
 
 @Parcelize
@@ -37,17 +40,17 @@ data class Leagues(
 ) : Parcelable
 
 @Parcelize
-data class Events(
+data class EventsLeagues(
     var idEvent: String?,
     var idLeague: String?,
-    var idHomeTeam: String?,
-    var idAwayTeam: String?,
+    var idHomeTeam: Int?,
+    var idAwayTeam: Int?,
     var strEvent: String?,
     var strSport: String?,
     var strLeague: String?,
     var strHomeTeam: String?,
     var strAwayTeam: String?,
-    var intHomeScore: String?,
+    var intHomeScore: Int?,
     var intRound: Int?,
     var intAwayScore: Int?,
     var intSpectators: Int?,
@@ -81,7 +84,13 @@ data class Events(
 ) : Parcelable
 
 @Parcelize
-data class Teams(
+data class TeamsBadgeH(
+    var idTeam: Int?,
+    var strTeamBadge: String?
+    ) : Parcelable
+
+@Parcelize
+data class TeamsBadgeA(
     var idTeam: Int?,
     var strTeamBadge: String?
     ) : Parcelable
