@@ -22,7 +22,7 @@
         android:layout_marginTop="@dimen/space_16" />
 
     <TextView
-        android:id="@+id/tv_empty_lastmath"
+        android:id="@+id/tv_empty_lastmatch"
         style="@style/TextAppearance.MaterialComponents.Headline4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,5 +35,5 @@
         android:textAllCaps="true"
         android:textColor="@color/colorDividerDark"
         android:textStyle="bold"
-        android:visibility="gone" />
+        android:visibility="invisible" />
 </RelativeLayout>

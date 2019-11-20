@@ -35,6 +35,6 @@
         android:textAllCaps="true"
         android:textColor="@color/colorDividerDark"
         android:textStyle="bold"
-        android:visibility="gone" />
+        android:visibility="invisible" />
 
 </RelativeLayout>

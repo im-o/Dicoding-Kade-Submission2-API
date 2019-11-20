@@ -27,6 +27,7 @@ import org.jetbrains.anko.support.v4.runOnUiThread
  * A simple [Fragment] subclass.
  */
 class LastMatchFragment : Fragment() {
+    var idLeague: Int? = 0
     var itemEvents = ArrayList<EventsLeagues>()
     var itemTeamsH = ArrayList<TeamsBadgeH>()
     var itemTeamsA = ArrayList<TeamsBadgeA>()
@@ -39,7 +40,7 @@ class LastMatchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val dataItems = DetailsActivity.items
-        val idLeague = dataItems?.idLeague?.toInt()
+        idLeague = dataItems?.idLeague?.toInt()
         setIdEvent(idLeague!!)
 
         val layoutManager = LinearLayoutManager(context)
@@ -61,7 +62,7 @@ class LastMatchFragment : Fragment() {
                 runOnUiThread {
                     disabelProgress()
                     if (e.message == KotlinNullPointerException().message) {
-                        tv_empty_lastmath.visible()
+                        tv_empty_lastmatch.visible()
                     }
                 }
             }
@@ -116,7 +117,11 @@ class LastMatchFragment : Fragment() {
         itemEvents.addAll(itemsE)
         itemTeamsH.addAll(itemsH)
         itemTeamsA.addAll(itemsA)
-        rv_lastmatch.adapter?.notifyDataSetChanged()
+        if (rv_lastmatch != null){
+            rv_lastmatch.adapter?.notifyDataSetChanged()
+        } else if (idLeague != 0 && idLeague != null) {
+            setIdEvent(idLeague!!)
+        }
         disabelProgress()
     }
 }

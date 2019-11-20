@@ -1,5 +1,6 @@
 package com.stimednp.kadesubmission2.ui.anko
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.widget.TextView
@@ -109,13 +110,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("DefaultLocale")
     private fun setById(leagues: ArrayList<Leagues>) {
         val listIdLeagues: MutableList<Int> = ArrayList()
-        sizeListId = leagues.size
-        for (i in leagues.indices) {
+        for (i in leagues.indices){
+            val sportSoccer = leagues.get(i).strSport?.toLowerCase()
             val id = leagues[i].idLeague!!.toInt()
-            listIdLeagues.add(id)
+            if (sportSoccer == "soccer"){
+                listIdLeagues.add(id)
+            }
         }
+        sizeListId = listIdLeagues.size
+//        for (i in leagues.indices) {
+//            val id = leagues[i].idLeague!!.toInt()
+//            listIdLeagues.add(id)
+//        }
         for (i in listIdLeagues.indices) {
             val id = listIdLeagues.get(i)
             getDataById(id)

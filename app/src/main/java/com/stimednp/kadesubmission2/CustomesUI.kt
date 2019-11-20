@@ -25,14 +25,11 @@ object CustomesUI {
     }
 
     @SuppressLint("SimpleDateFormat")
-    fun changeFormatDate(data: String): String{
-        val dateFormat: DateFormat? = SimpleDateFormat("dd/MM/yy")
-        val simpleFormat = SimpleDateFormat("dd MMMM yyyy zzzz")
+    fun changeDateFormat(data: String): String {
+        val dateFormat: DateFormat? = SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
+        val simpleFormat = SimpleDateFormat("dd MMMM yyyy hh:mm:ss aa zz")
         val date: Date = dateFormat?.parse(data)!!
-
-
         simpleFormat.timeZone = TimeZone.getTimeZone("GMT+7")
-        e("INIII","ERRRORR DATE : ${simpleFormat.format(date)}")
         return simpleFormat.format(date)
     }
 }

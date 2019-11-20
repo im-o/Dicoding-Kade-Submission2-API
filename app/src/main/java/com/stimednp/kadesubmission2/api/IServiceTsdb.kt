@@ -19,30 +19,30 @@ interface IServiceTsdb {
     fun getListLeagues(): Deferred<Response<ResponseLeagues>>
 
     //detail liga
-    @GET("api/v1/json/1/lookupleague.php?")
+    @GET("api/v1/json/1/lookupleague.php")
     fun getDetailById(@Query("id") idLiga: Int?): Deferred<Response<ResponseLeagues>>
 
     //next match
-    @GET("api/v1/json/1/eventsnextleague.php?")
+    @GET("api/v1/json/1/eventsnextleague.php")
     fun getNextMatch(@Query("id") id: Int?): Deferred<Response<ResponseEvents>>
 
     //previous match
-    @GET("api/v1/json/1/eventspastleague.php?")
+    @GET("api/v1/json/1/eventspastleague.php")
     fun getPrevMatch(@Query("id") id: Int?): Deferred<Response<ResponseEvents>>
 
+    //search event / pertandingan
+    @GET("api/v1/json/1/searchevents.php")
+    fun getSearchEvent(@Query("e") e: String?): Deferred<Response<ResponseEvents>>
+
     //detail event / pertandingan
-    @GET("api/v1/json/1/lookupevent.php?")
+    @GET("api/v1/json/1/lookupevent.php")
     fun getDetailEvent(@Query("id") idEvent: Int?): Deferred<Response<ResponseEvents>>
 
-    //search event / pertandingan
-    @GET("api/v1/json/1/searchevents.php?")
-    fun getSearchEvent(@Query("e") queryS: String?): Deferred<Response<ResponseEvents>>
-
     //detail team home
-    @GET("api/v1/json/1/lookupteam.php?")
+    @GET("api/v1/json/1/lookupteam.php")
     fun getDetailTeamH(@Query("id") idTeam: Int?): Deferred<Response<ResponseTeamsH>>
 
     //detail team away
-    @GET("api/v1/json/1/lookupteam.php?")
+    @GET("api/v1/json/1/lookupteam.php")
     fun getDetailTeamA(@Query("id") idTeam: Int?): Deferred<Response<ResponseTeamsA>>
 }

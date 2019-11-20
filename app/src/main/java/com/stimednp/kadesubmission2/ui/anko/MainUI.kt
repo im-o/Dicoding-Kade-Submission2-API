@@ -49,7 +49,7 @@ class MainUI(val items: ArrayList<Leagues>) : AnkoComponent<MainActivity> {
             swipeRefresh = swipeRefreshLayout {
                 id = R.id.swipe_main
                 isRefreshing = true
-                setColorSchemeResources(colorAccent, colorTextGrey, colorPrimary, colorTransparantBlack)
+                setColorSchemeResources(colorAccent, colorTwitter, colorYoutube, colorFacebook)
                 relativeLayout {
                     lparams(matchParent, matchParent)
                     rv_main = recyclerView {

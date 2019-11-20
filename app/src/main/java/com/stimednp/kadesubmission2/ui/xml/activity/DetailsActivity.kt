@@ -5,18 +5,19 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
 import com.squareup.picasso.Picasso
 import com.stimednp.kadesubmission2.R
 import com.stimednp.kadesubmission2.model.Leagues
 import com.stimednp.kadesubmission2.ui.adapter.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.item_header.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
-class DetailsActivity : AppCompatActivity(), SearchView.OnQueryTextListener, View.OnClickListener {
+class DetailsActivity : AppCompatActivity(), View.OnClickListener {
     companion object {
 
         val EXTRA_DATA: String = "extra_data"
@@ -70,21 +71,28 @@ class DetailsActivity : AppCompatActivity(), SearchView.OnQueryTextListener, Vie
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.option_menu, menu)
-        val searchItem = menu?.findItem(R.id.item_search)
-        val searchView = searchItem?.actionView as SearchView
-        searchView.queryHint = "Search"
-        searchView.setOnQueryTextListener(this)
+        menuInflater.inflate(R.menu.option_search, menu)
+//        val searchItem = menu?.findItem(R.id.item_search)
+//        val searchView = searchItem?.actionView as SearchView
+//        searchView.queryHint = "Search"
+//        searchView.setOnQueryTextListener(this)
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onQueryTextSubmit(query: String?): Boolean {
-        return true
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.item_search){
+            startActivity<SearchActivity>()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
-    override fun onQueryTextChange(newText: String?): Boolean {
-        return true
-    }
+//    override fun onQueryTextSubmit(query: String?): Boolean {
+//        return true
+//    }
+//
+//    override fun onQueryTextChange(newText: String?): Boolean {
+//        return true
+//    }
 
     override fun onClick(id: View?) {
         if (id == tv_web) {

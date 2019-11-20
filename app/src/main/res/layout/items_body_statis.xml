@@ -66,13 +66,11 @@
         android:id="@+id/cardView"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         app:cardBackgroundColor="@color/colorDivider"
         app:cardCornerRadius="@dimen/space_8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev1"
         app:layout_constraintTop_toBottomOf="@+id/view2">
 
         <ImageView
@@ -85,15 +83,16 @@
             tools:src="@drawable/english_premier_league" />
 
         <ProgressBar
-            android:layout_gravity="center"
             android:id="@+id/prog_hsteam"
             android:layout_width="@dimen/space_10"
-            android:layout_height="@dimen/space_10"/>
+            android:layout_height="@dimen/space_10"
+            android:layout_gravity="center" />
     </androidx.cardview.widget.CardView>
 
     <TextView
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
         android:id="@+id/textView3"
-        style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -112,12 +111,10 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
         app:cardBackgroundColor="@color/colorDivider"
         app:cardCornerRadius="@dimen/space_8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev3"
         app:layout_constraintTop_toBottomOf="@+id/view2">
 
         <ImageView
@@ -130,15 +127,16 @@
             tools:src="@drawable/english_premier_league" />
 
         <ProgressBar
-            android:layout_gravity="center"
             android:id="@+id/prog_asteam"
             android:layout_width="@dimen/space_10"
-            android:layout_height="@dimen/space_10"/>
+            android:layout_height="@dimen/space_10"
+            android:layout_gravity="center" />
 
     </androidx.cardview.widget.CardView>
 
     <TextView
-        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -154,7 +152,7 @@
 
     <TextView
         android:id="@+id/textView15"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
@@ -163,10 +161,10 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev3"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintStart_toEndOf="@+id/guidelinev2"
+        app:layout_constraintTop_toTopOf="@+id/textView15h" />
 
     <TextView
         android:id="@+id/textView2"
@@ -180,8 +178,8 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev3"
+        app:layout_constraintStart_toEndOf="@+id/guidelinev2"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
     <TextView
@@ -196,8 +194,8 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev3"
+        app:layout_constraintStart_toEndOf="@+id/guidelinev2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
@@ -212,8 +210,8 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev3"
+        app:layout_constraintStart_toEndOf="@+id/guidelinev2"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
@@ -227,15 +225,15 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev3"
+        app:layout_constraintStart_toEndOf="@+id/guidelinev2"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:maxLines="1"
         android:text="Lineup Goal keeper"
@@ -243,9 +241,9 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev3"
+        app:layout_constraintHorizontal_bias="0.034"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev2"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <TextView
@@ -259,9 +257,9 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="0.50"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev1"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
@@ -275,9 +273,9 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev3"
         app:layout_constraintHorizontal_bias="0.50"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toEndOf="@+id/guidelinev2"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
@@ -291,9 +289,9 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev3"
         app:layout_constraintHorizontal_bias="0.50"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toEndOf="@+id/guidelinev2"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
@@ -307,9 +305,9 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev3"
         app:layout_constraintHorizontal_bias="0.50"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toEndOf="@+id/guidelinev2"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <TextView
@@ -323,15 +321,15 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev3"
         app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toEndOf="@+id/guidelinev2"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
 
     <TextView
         android:id="@+id/textView15h"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ellipsize="end"
@@ -341,14 +339,31 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev1"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
+        android:id="@+id/textView2h"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Goals"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/size_8"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
+        app:layout_constraintHorizontal_bias="0.004"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev1"
+        app:layout_constraintTop_toBottomOf="@+id/textView15h" />
+
+    <TextView
         android:id="@+id/textView5h"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ellipsize="end"
@@ -358,14 +373,14 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev1"
         app:layout_constraintTop_toBottomOf="@+id/textView2h" />
 
     <TextView
         android:id="@+id/textView6h"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
@@ -374,14 +389,14 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev1"
         app:layout_constraintTop_toBottomOf="@+id/textView5h" />
 
     <TextView
         android:id="@+id/textView7h"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
@@ -390,14 +405,14 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev1"
         app:layout_constraintTop_toBottomOf="@+id/textView6h" />
 
     <TextView
         android:id="@+id/textView9h"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ellipsize="end"
@@ -407,14 +422,14 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev1"
         app:layout_constraintTop_toBottomOf="@+id/textView7h" />
 
     <TextView
         android:id="@+id/textView10h"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ellipsize="end"
@@ -424,14 +439,14 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev1"
         app:layout_constraintTop_toBottomOf="@+id/textView9h" />
 
     <TextView
         android:id="@+id/textView11h"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
@@ -440,14 +455,14 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev1"
         app:layout_constraintTop_toBottomOf="@+id/textView10h" />
 
     <TextView
         android:id="@+id/textView13h"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
@@ -456,14 +471,14 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev1"
         app:layout_constraintTop_toBottomOf="@+id/textView11h" />
 
     <TextView
         android:id="@+id/textView14h"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
@@ -472,13 +487,13 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev1"
         app:layout_constraintTop_toBottomOf="@+id/textView13h" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ellipsize="end"
@@ -488,15 +503,31 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev1"
         app:layout_constraintTop_toBottomOf="@+id/textView14h" />
 
 
     <TextView
-        android:id="@+id/textView2h"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView15a"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Formation"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/size_8"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev3"
+        app:layout_constraintTop_toTopOf="@+id/textView15" />
+
+    <TextView
+        android:id="@+id/textView2a"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:ellipsize="end"
@@ -506,30 +537,14 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
-        app:layout_constraintHorizontal_bias="0.004"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/textView15h" />
-
-    <TextView
-        android:id="@+id/textView15a"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="Formation"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/size_8"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintStart_toStartOf="@+id/guidelinev3"
+        app:layout_constraintTop_toBottomOf="@+id/textView15a" />
 
     <TextView
         android:id="@+id/textView5a"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:ellipsize="end"
@@ -539,14 +554,14 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev3"
         app:layout_constraintTop_toBottomOf="@+id/textView2a" />
 
     <TextView
         android:id="@+id/textView6a"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:ellipsize="end"
@@ -556,14 +571,14 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev3"
         app:layout_constraintTop_toBottomOf="@+id/textView5a" />
 
     <TextView
         android:id="@+id/textView7a"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:ellipsize="end"
@@ -573,14 +588,14 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev3"
         app:layout_constraintTop_toBottomOf="@+id/textView6a" />
 
     <TextView
         android:id="@+id/textView9a"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ellipsize="end"
@@ -590,14 +605,14 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev3"
         app:layout_constraintTop_toBottomOf="@+id/textView7a" />
 
     <TextView
         android:id="@+id/textView10a"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
@@ -606,14 +621,14 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev3"
         app:layout_constraintTop_toBottomOf="@+id/textView9a" />
 
     <TextView
         android:id="@+id/textView11a"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
@@ -622,14 +637,14 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev3"
         app:layout_constraintTop_toBottomOf="@+id/textView10a" />
 
     <TextView
         android:id="@+id/textView13a"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
@@ -638,14 +653,14 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev3"
         app:layout_constraintTop_toBottomOf="@+id/textView11a" />
 
     <TextView
         android:id="@+id/textView14a"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
@@ -654,13 +669,13 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev3"
         app:layout_constraintTop_toBottomOf="@+id/textView13a" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
@@ -669,26 +684,44 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
+        app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/guidelinev3"
         app:layout_constraintTop_toBottomOf="@+id/textView14a" />
 
-    <TextView
-        android:id="@+id/textView2a"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinev1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="8dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinev4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="Goals"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/size_8"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewA"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/textView15a" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="8dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinev2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="156dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinev3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="156dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineh1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="170dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

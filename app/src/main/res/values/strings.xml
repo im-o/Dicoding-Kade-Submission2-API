@@ -2,6 +2,7 @@
     <string name="app_name">KADE Submission 2</string>
     <string name="app_title">List Liga Indonesia</string>
     <string name="app_detail_leagues">Details Leagues</string>
+    <string name="app_search_event">Search your events</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

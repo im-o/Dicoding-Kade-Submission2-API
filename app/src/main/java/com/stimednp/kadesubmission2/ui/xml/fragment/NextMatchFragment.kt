@@ -2,7 +2,7 @@ package com.stimednp.kadesubmission2.ui.xml.fragment
 
 
 import android.os.Bundle
-import android.util.Log
+import android.util.Log.e
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,24 +28,26 @@ import org.jetbrains.anko.support.v4.runOnUiThread
  * A simple [Fragment] subclass.
  */
 class NextMatchFragment : Fragment() {
+    var idLeague: Int? = 0
     var itemEvents = ArrayList<EventsLeagues>()
     var itemTeamsH = ArrayList<TeamsBadgeH>()
     var itemTeamsA = ArrayList<TeamsBadgeA>()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_next_match, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val dataItems = DetailsActivity.items
-        val idLeague = dataItems?.idLeague?.toInt()
+        idLeague = dataItems?.idLeague?.toInt()!!
         setIdEvent(idLeague!!)
 
         val layoutManager = LinearLayoutManager(context)
         rv_nextmatch.layoutManager = layoutManager
         rv_nextmatch.adapter = LastMatchAdapter(context!!, itemEvents, itemTeamsH, itemTeamsA)
     }
+
     private fun setIdEvent(idLeague: Int) {
         val tsdbService = ApiClient.iServiceTsdb
         GlobalScope.launch(Dispatchers.Main) {
@@ -54,12 +56,12 @@ class NextMatchFragment : Fragment() {
                 val responseE = listIdEvents.await()
                 val resBodyE = responseE.body()
                 savetoArrays(resBodyE?.events!!)
-            } catch (e: Exception) {
-                Log.e("INIII", "ERRRROR $e")
-                runOnUiThread {
-                    disabelProgress()
-                    if (e.message == KotlinNullPointerException().message) {
-                        tv_empty_lastmath.visible()
+            } catch (er: Exception) {
+                e("INIII", "ERRRROR $er")
+                if (er.message == KotlinNullPointerException().message) {
+                    runOnUiThread {
+                        tv_empty_nextmatch.visible()
+                        disabelProgress()
                     }
                 }
             }
@@ -81,8 +83,8 @@ class NextMatchFragment : Fragment() {
                     val bodyA = responseA.body()
                     itemsH.addAll(bodyH?.teams!!)
                     itemsA.addAll(bodyA?.teams!!)
-                } catch (e: Exception) {
-                    Log.e("INIII", "ERRRRORR 2 $e")
+                } catch (er: Exception) {
+                    e("INIII", "ERRRRORR 2 $er")
                     runOnUiThread { disabelProgress() }
                 }
             }
@@ -114,7 +116,11 @@ class NextMatchFragment : Fragment() {
         itemEvents.addAll(itemsE)
         itemTeamsH.addAll(itemsH)
         itemTeamsA.addAll(itemsA)
-        rv_nextmatch.adapter?.notifyDataSetChanged()
+        if (rv_nextmatch.adapter != null) {
+            rv_nextmatch.adapter?.notifyDataSetChanged()
+        } else if (idLeague != 0) {
+            setIdEvent(idLeague!!)
+        }
         disabelProgress()
     }
 
