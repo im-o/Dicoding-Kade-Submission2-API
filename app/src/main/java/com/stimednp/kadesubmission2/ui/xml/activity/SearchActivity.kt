@@ -12,9 +12,8 @@ import com.stimednp.kadesubmission2.R
 import com.stimednp.kadesubmission2.R.color.*
 import com.stimednp.kadesubmission2.api.ApiClient
 import com.stimednp.kadesubmission2.model.EventsLeagues
-import com.stimednp.kadesubmission2.model.TeamsBadgeA
-import com.stimednp.kadesubmission2.model.TeamsBadgeH
-import com.stimednp.kadesubmission2.ui.adapter.LastMatchAdapter
+import com.stimednp.kadesubmission2.model.TeamsBadge
+import com.stimednp.kadesubmission2.ui.adapter.EventMatchAdapter
 import com.stimednp.kadesubmission2.visible
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.coroutines.Dispatchers
@@ -25,8 +24,8 @@ import org.jetbrains.anko.toast
 
 class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     var itemEvents = ArrayList<EventsLeagues>()
-    var itemTeamsH = ArrayList<TeamsBadgeH>()
-    var itemTeamsA = ArrayList<TeamsBadgeA>()
+    var itemTeamsH = ArrayList<TeamsBadge>()
+    var itemTeamsA = ArrayList<TeamsBadge>()
     var itemSave = ArrayList<EventsLeagues>()
     var textSearch: String? = null
 
@@ -55,7 +54,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private fun initial() {
         val layoutManager = LinearLayoutManager(this)
         rv_search.layoutManager = layoutManager
-        rv_search.adapter = LastMatchAdapter(this, itemEvents, itemTeamsH, itemTeamsA)
+        rv_search.adapter = EventMatchAdapter(this, itemEvents, itemTeamsH, itemTeamsA)
     }
 
     private fun setToolbar() {
@@ -138,8 +137,8 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private fun setIdTeam(events: ArrayList<EventsLeagues>, teamH: ArrayList<Int>, teamA: ArrayList<Int>) {
         val tsdbService = ApiClient.iServiceTsdb
         GlobalScope.launch(Dispatchers.Main) {
-            val itemsH = ArrayList<TeamsBadgeH>()
-            val itemsA = ArrayList<TeamsBadgeA>()
+            val itemsH = ArrayList<TeamsBadge>()
+            val itemsA = ArrayList<TeamsBadge>()
             if (events.size > 0) {
                 for (i in events.indices) {
                     try {
@@ -165,7 +164,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     }
 
 
-    private fun setAdapter(itemsE: ArrayList<EventsLeagues>, itemsH: ArrayList<TeamsBadgeH>, itemsA: ArrayList<TeamsBadgeA>) {
+    private fun setAdapter(itemsE: ArrayList<EventsLeagues>, itemsH: ArrayList<TeamsBadge>, itemsA: ArrayList<TeamsBadge>) {
         itemEvents.clear()
         itemTeamsH.clear()
         itemTeamsA.clear()

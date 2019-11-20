@@ -5,7 +5,6 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.util.Log.e
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*

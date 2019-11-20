@@ -1,6 +1,5 @@
 package com.stimednp.kadesubmission2.ui.adapter
 
-import android.util.Log.e
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -8,7 +7,6 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import com.stimednp.kadesubmission2.R
@@ -17,7 +15,6 @@ import com.stimednp.kadesubmission2.model.Leagues
 import com.stimednp.kadesubmission2.ui.anko.ItemLeaguesUI
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.find
-import java.lang.Exception
 
 /**
  * Created by rivaldy on 11/10/2019.

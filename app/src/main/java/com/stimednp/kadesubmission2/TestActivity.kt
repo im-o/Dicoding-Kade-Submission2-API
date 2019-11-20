@@ -1,8 +1,8 @@
 package com.stimednp.kadesubmission2
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log.e
+import androidx.appcompat.app.AppCompatActivity
 import com.stimednp.kadesubmission2.api.ApiClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

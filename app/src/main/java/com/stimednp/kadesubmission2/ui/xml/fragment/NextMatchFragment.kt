@@ -12,12 +12,10 @@ import com.stimednp.kadesubmission2.R
 import com.stimednp.kadesubmission2.api.ApiClient
 import com.stimednp.kadesubmission2.gone
 import com.stimednp.kadesubmission2.model.EventsLeagues
-import com.stimednp.kadesubmission2.model.TeamsBadgeA
-import com.stimednp.kadesubmission2.model.TeamsBadgeH
-import com.stimednp.kadesubmission2.ui.adapter.LastMatchAdapter
+import com.stimednp.kadesubmission2.model.TeamsBadge
+import com.stimednp.kadesubmission2.ui.adapter.EventMatchAdapter
 import com.stimednp.kadesubmission2.ui.xml.activity.DetailsActivity
 import com.stimednp.kadesubmission2.visible
-import kotlinx.android.synthetic.main.fragment_last_match.*
 import kotlinx.android.synthetic.main.fragment_next_match.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -30,8 +28,8 @@ import org.jetbrains.anko.support.v4.runOnUiThread
 class NextMatchFragment : Fragment() {
     var idLeague: Int? = 0
     var itemEvents = ArrayList<EventsLeagues>()
-    var itemTeamsH = ArrayList<TeamsBadgeH>()
-    var itemTeamsA = ArrayList<TeamsBadgeA>()
+    var itemTeamsH = ArrayList<TeamsBadge>()
+    var itemTeamsA = ArrayList<TeamsBadge>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_next_match, container, false)
@@ -45,7 +43,7 @@ class NextMatchFragment : Fragment() {
 
         val layoutManager = LinearLayoutManager(context)
         rv_nextmatch.layoutManager = layoutManager
-        rv_nextmatch.adapter = LastMatchAdapter(context!!, itemEvents, itemTeamsH, itemTeamsA)
+        rv_nextmatch.adapter = EventMatchAdapter(context!!, itemEvents, itemTeamsH, itemTeamsA)
     }
 
     private fun setIdEvent(idLeague: Int) {
@@ -71,8 +69,8 @@ class NextMatchFragment : Fragment() {
     private fun setIdTeam(events: ArrayList<EventsLeagues>, teamH: ArrayList<Int>, teamA: ArrayList<Int>) {
         val tsdbService = ApiClient.iServiceTsdb
         GlobalScope.launch(Dispatchers.Main) {
-            val itemsH = ArrayList<TeamsBadgeH>()
-            val itemsA = ArrayList<TeamsBadgeA>()
+            val itemsH = ArrayList<TeamsBadge>()
+            val itemsA = ArrayList<TeamsBadge>()
             for (i in events.indices) {
                 val listIdHome = tsdbService.getDetailTeamH(teamH[i])
                 val listIdAway = tsdbService.getDetailTeamA(teamA[i])
@@ -110,7 +108,7 @@ class NextMatchFragment : Fragment() {
         progress_nextmatch.gone()
     }
 
-    private fun setAdapter(itemsE: ArrayList<EventsLeagues>, itemsH: ArrayList<TeamsBadgeH>, itemsA: ArrayList<TeamsBadgeA>) {
+    private fun setAdapter(itemsE: ArrayList<EventsLeagues>, itemsH: ArrayList<TeamsBadge>, itemsA: ArrayList<TeamsBadge>) {
         itemEvents.clear()
         itemTeamsH.clear()
         itemEvents.addAll(itemsE)

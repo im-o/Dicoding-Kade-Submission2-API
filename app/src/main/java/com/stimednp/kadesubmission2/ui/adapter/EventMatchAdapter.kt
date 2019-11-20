@@ -11,8 +11,7 @@ import com.stimednp.kadesubmission2.CustomesUI
 import com.stimednp.kadesubmission2.R
 import com.stimednp.kadesubmission2.invisible
 import com.stimednp.kadesubmission2.model.EventsLeagues
-import com.stimednp.kadesubmission2.model.TeamsBadgeA
-import com.stimednp.kadesubmission2.model.TeamsBadgeH
+import com.stimednp.kadesubmission2.model.TeamsBadge
 import com.stimednp.kadesubmission2.ui.xml.activity.DetailsEventActivity
 import com.stimednp.kadesubmission2.visible
 import kotlinx.android.synthetic.main.item_event_match.view.*
@@ -22,11 +21,11 @@ import org.jetbrains.anko.startActivity
  * Created by rivaldy on 11/16/2019.
  */
 
-class LastMatchAdapter(
+class EventMatchAdapter(
     private val context: Context, private val items: ArrayList<EventsLeagues>,
-    private val badgesH: ArrayList<TeamsBadgeH>, private val badgesA: ArrayList<TeamsBadgeA>
+    private val badgesH: ArrayList<TeamsBadge>, private val badgesA: ArrayList<TeamsBadge>
 ) :
-    RecyclerView.Adapter<LastMatchAdapter.LastMatchViewHolder>() {
+    RecyclerView.Adapter<EventMatchAdapter.LastMatchViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LastMatchViewHolder {
         return LastMatchViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_event_match, parent, false))
@@ -44,7 +43,7 @@ class LastMatchAdapter(
     }
 
     class LastMatchViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        fun bindItem(itemsE: EventsLeagues?, badgesH: TeamsBadgeH?, badgesA: TeamsBadgeA?) {
+        fun bindItem(itemsE: EventsLeagues?, badgesH: TeamsBadge?, badgesA: TeamsBadge?) {
             val urlimgH = "${badgesH?.strTeamBadge}/preview"
             val urlimgA = "${badgesA?.strTeamBadge}/preview"
             val dateChange = CustomesUI.changeDateFormat("${itemsE?.dateEvent!!} ${itemsE.strTime}")
