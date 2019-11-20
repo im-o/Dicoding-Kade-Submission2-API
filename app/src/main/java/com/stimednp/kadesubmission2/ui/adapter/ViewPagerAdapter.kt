@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.stimednp.kadesubmission2.R
-import com.stimednp.kadesubmission2.ui.fragment.LastMatchFragment
-import com.stimednp.kadesubmission2.ui.fragment.NextMatchFragment
+import com.stimednp.kadesubmission2.ui.xml.fragment.LastMatchFragment
+import com.stimednp.kadesubmission2.ui.xml.fragment.NextMatchFragment
 
 /**
  * Created by rivaldy on 11/13/2019.

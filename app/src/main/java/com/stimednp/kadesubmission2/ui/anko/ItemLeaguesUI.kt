@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat.getColor
+import androidx.core.content.ContextCompat.getDrawable
 import com.stimednp.kadesubmission2.R
 import com.stimednp.kadesubmission2.R.color.*
 import org.jetbrains.anko.*
@@ -22,7 +23,7 @@ class ItemLeaguesUI : AnkoComponent<ViewGroup> {
                 lparams(width = matchParent, height = wrapContent)
                 cardView {
                     id = R.id.liga_cardv
-                    foreground = resources.getDrawable(R.drawable.bg_onclick_transparant)
+                    foreground = getDrawable(context, R.drawable.bg_onclick_transparant)
                     setCardBackgroundColor(getColor(context, colorPrimary))
                     verticalLayout {
                         lparams(matchParent, wrapContent)

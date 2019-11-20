@@ -13,7 +13,7 @@ import com.stimednp.kadesubmission2.R
 import com.stimednp.kadesubmission2.R.color.*
 import com.stimednp.kadesubmission2.model.Leagues
 import com.stimednp.kadesubmission2.ui.adapter.HomeAdapter
-import com.stimednp.kadesubmission2.ui.xml.DetailsActivity
+import com.stimednp.kadesubmission2.ui.xml.activity.DetailsActivity
 import org.jetbrains.anko.*
 import org.jetbrains.anko.design.coordinatorLayout
 import org.jetbrains.anko.design.themedAppBarLayout
@@ -58,7 +58,7 @@ class MainUI(val items: ArrayList<Leagues>) : AnkoComponent<MainActivity> {
                         setHasFixedSize(true)
                         layoutManager = LinearLayoutManager(context)
                         adapter = HomeAdapter(items) {
-//                            startActivity<Main2Activity>()
+//                            startActivity<DetailsActivity>()
                             startActivity<DetailsActivity>(DetailsActivity.EXTRA_DATA to it)
                         }
                     }
@@ -68,8 +68,9 @@ class MainUI(val items: ArrayList<Leagues>) : AnkoComponent<MainActivity> {
                         textSize = 32f
                         typeface = Typeface.DEFAULT_BOLD
                         textAlignment = View.TEXT_ALIGNMENT_CENTER
-                    }.lparams(matchParent, wrapContent){
-                        centerInParent()
+                    }.lparams(matchParent, wrapContent) {
+                        topMargin = dip(80)
+                        alignParentTop()
                     }
                 }
             }.lparams(matchParent, matchParent) {

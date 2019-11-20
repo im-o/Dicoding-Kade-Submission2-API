@@ -12,8 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Main2Activity"></activity>
-        <activity android:name=".ui.xml.DetailsActivity" />
+        <activity android:name=".ui.xml.activity.DetailsEventActivity"></activity>
+        <activity android:name=".ui.xml.activity.EventDetailsActivity" />
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".ui.xml.activity.DetailsActivity" />
         <activity android:name=".ui.anko.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

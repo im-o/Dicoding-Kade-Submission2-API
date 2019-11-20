@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.LastMatchFragment">
+    tools:context=".ui.xml.fragment.LastMatchFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_lastmatch"
@@ -17,16 +17,20 @@
         android:id="@+id/progress_lastmatch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/space_16" />
 
     <TextView
         android:id="@+id/tv_empty_lastmath"
         style="@style/TextAppearance.MaterialComponents.Headline4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:padding="32dp"
-        android:text="@string/str_nodata"
+        android:layout_marginTop="@dimen/space_55"
+        android:padding="@dimen/space_32"
+        android:text="@string/str_nomatch"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/colorDividerDark"

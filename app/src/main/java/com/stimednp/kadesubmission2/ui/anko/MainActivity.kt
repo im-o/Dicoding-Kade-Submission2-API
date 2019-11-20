@@ -2,7 +2,6 @@ package com.stimednp.kadesubmission2.ui.anko
 
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log.e
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.stimednp.kadesubmission2.CustomesUI.showProgress
@@ -37,10 +36,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         MainUI(leagueList).setContentView(this)
         init()
-        showDataProgress()
         getIdListLeague()
         swipeRefresh.onRefresh {
-            getDataApi()
+            reloadData()
         }
     }
 
@@ -51,11 +49,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showDataProgress() {
-        tvProgress.setText(strProgress)
+        tvProgress.text = strProgress
         showProgress.show()
     }
 
     private fun getIdListLeague() {
+        showDataProgress()
         val tsdbService = ApiClient.iServiceTsdb
         GlobalScope.launch(Dispatchers.IO) {
             val listIdLeagues = tsdbService.getListLeagues()
@@ -64,8 +63,10 @@ class MainActivity : AppCompatActivity() {
                 val responseBody = respose.body()
                 setById(responseBody?.leagues!!)
             } catch (er: Exception) {
-                runOnUiThread { disableProgress() }
-                e("INIII", "Error getDataById ${er.message}")
+                runOnUiThread {
+                    disableProgress()
+                    toast("Something error, check your connection")
+                }
             }
         }
     }
@@ -77,34 +78,34 @@ class MainActivity : AppCompatActivity() {
             try {
                 val respose = listIdLeagues.await()
                 val responseBody = respose.body()
-                addToList(responseBody?.leagues!!)
-//                setAdapter(responseBody?.leagues!!)
+                savetoArrays(responseBody?.leagues!!)
                 filterList(responseBody.leagues)
             } catch (er: Exception) {
-                runOnUiThread { disableProgress() }
-                e("INIII", "Error getDataById ${er.message}")
+                runOnUiThread {
+                    disableProgress()
+                    toast("Something error, check your connection")
+                }
             }
         }
     }
 
-    private fun filterList(leagues: java.util.ArrayList<Leagues>) { //loop stop after size == leagues.size
-        items.addAll(leagues)
-        if (sizeListId > 20){
-//            e("INIII","UKURAN : ${items.size}")
-//            toast("size ${leagues.size}")
-            sizeLen = sizeLen+1
-            if (items.size == 20){
-                setAdapter(items)
-//                toast("20 items : ${items.size}")
-                items.clear()
-            } else if (sizeListId.equals(sizeLen) && items.size != 0){
-                toast("SAMA size items ${sizeLen} dan items size : ${items.size}")
+    private fun filterList(leagues: ArrayList<Leagues>) { //loop stop after size == leagues.size
+        if (leagues.size > 0) {
+            tv_nodata.invisible()
+            items.addAll(leagues)
+            if (sizeListId > 20) {
+                sizeLen = sizeLen + 1
+                if (items.size == 20) {
+                    setAdapter(items)
+                    items.clear()
+                } else if (sizeListId.equals(sizeLen) && items.size != 0) {
+                    setAdapter(items)
+                    items.clear()
+                }
+            } else {
                 setAdapter(items)
                 items.clear()
             }
-        } else{
-            toast("kurang")
-            setAdapter(items)
         }
     }
 
@@ -121,35 +122,32 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun getDataApi() {
+    fun reloadData() {
         if (leagueAddto.size >= sizeListId && sizeListId != 0) {
-            e("INIII", "${leagueAddto.size}")
+            leagueList.clear()
             setAdapter(leagueAddto)
+            toast("No more leagues, All data is loaded")
+            disableProgress()
         } else {
-//            showDataProgress()
             getIdListLeague()
-//            toast("no")
         }
     }
 
-    fun addToList(leagues: ArrayList<Leagues>) {
+    fun savetoArrays(leagues: ArrayList<Leagues>) {
         val strProg = ("$strProgress ${leagueAddto.size} of $sizeListId")
         leagueAddto.addAll(leagues)
-        tvProgress.setText(strProg)
+        tvProgress.text = strProg
 
         if (leagueAddto.size == sizeListId) {
-            tv_nodata.invisible()
-//            setAdapter(leagueAddto)
-            longToast("${getString(R.string.str_loadsucces)} $sizeListId")
-//            leagueAddto.clear()
+            disableProgress()
+            longToast(getString(R.string.str_loadsucces))
         }
     }
+
     override fun onBackPressed() {
         val strClose = resources.getString(R.string.tap_to_close)
         if (isBackPress) {
-            toast("exit")
-//            super.onBackPressed()
-            return
+            super.onBackPressed()
         }
         isBackPress = true
         toast(strClose)
@@ -169,9 +167,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setAdapter(leagues: ArrayList<Leagues>) {
-//        toast("sizee : $sizeListId")
-        disableProgress()
-//        leagueList.clear()
         leagueList.addAll(leagues)
         rv_main.adapter?.notifyDataSetChanged()
     }

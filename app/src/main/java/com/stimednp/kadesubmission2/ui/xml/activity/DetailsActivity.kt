@@ -1,4 +1,4 @@
-package com.stimednp.kadesubmission2.ui.xml
+package com.stimednp.kadesubmission2.ui.xml.activity
 
 import android.content.Intent
 import android.net.Uri
@@ -105,7 +105,7 @@ class DetailsActivity : AppCompatActivity(), SearchView.OnQueryTextListener, Vie
             try {
                 val uri = Uri.parse("http://$url")
                 val intent = Intent(Intent.ACTION_VIEW, uri)
-                Handler().postDelayed({startActivity(intent)}, 100)
+                Handler().postDelayed({ startActivity(intent) }, 100)
             } catch (e: Exception) {
                 toast("Something Error uri : $url")
             }
