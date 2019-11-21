@@ -71,7 +71,7 @@ class DetailsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.item_search){
+        if (item.itemId == R.id.item_search) {
             startActivity<SearchActivity>()
         }
         return super.onOptionsItemSelected(item)

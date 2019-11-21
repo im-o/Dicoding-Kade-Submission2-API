@@ -113,10 +113,10 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("DefaultLocale")
     private fun setById(leagues: ArrayList<Leagues>) {
         val listIdLeagues: MutableList<Int> = ArrayList()
-        for (i in leagues.indices){
+        for (i in leagues.indices) {
             val sportSoccer = leagues.get(i).strSport?.toLowerCase()
             val id = leagues[i].idLeague!!.toInt()
-            if (sportSoccer == "soccer"){
+            if (sportSoccer == "soccer") {
                 listIdLeagues.add(id)
             }
         }

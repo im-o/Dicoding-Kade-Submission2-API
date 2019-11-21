@@ -22,7 +22,8 @@ class ResponseTeamsH {
 class ResponseTeamsA {
     var teams = ArrayList<TeamsBadge>()
 }
-class ResponseSearch{
+
+class ResponseSearch {
     var event = ArrayList<EventsLeagues>()
 }
 

@@ -20,7 +20,7 @@ import org.jetbrains.anko.find
  * Created by rivaldy on 11/10/2019.
  */
 
-class HomeAdapter(val items: ArrayList<Leagues>, val listener: (Leagues) -> Unit): RecyclerView.Adapter<HomeAdapter.HomeAdapterViewHolder>() {
+class HomeAdapter(val items: ArrayList<Leagues>, val listener: (Leagues) -> Unit) : RecyclerView.Adapter<HomeAdapter.HomeAdapterViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeAdapterViewHolder {
         return HomeAdapterViewHolder(ItemLeaguesUI().createView(AnkoContext.Companion.create(parent.context, parent)))
@@ -34,7 +34,7 @@ class HomeAdapter(val items: ArrayList<Leagues>, val listener: (Leagues) -> Unit
         holder.bindItem(items[position], position, listener)
     }
 
-    class HomeAdapterViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    class HomeAdapterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val ligaName: TextView = view.find(R.id.liga_name)
         private val ligaDesc: TextView = view.find(R.id.liga_desc)
         private val ligaImg: ImageView = view.find(R.id.liga_img)
@@ -43,10 +43,10 @@ class HomeAdapter(val items: ArrayList<Leagues>, val listener: (Leagues) -> Unit
 
         fun bindItem(leagues: Leagues, position: Int, listener: (Leagues) -> Unit) {
             val strUrl = "${leagues.strBadge}/preview"
-            val strName = "$position. ${leagues.strLeague}"
+            val strName = "${position+1}. ${leagues.strLeague}"
             ligaName.text = strName
             ligaDesc.text = leagues.strDescriptionEN
-            Picasso.get().load(strUrl).fit().into(ligaImg, object : Callback{
+            Picasso.get().load(strUrl).fit().into(ligaImg, object : Callback {
                 override fun onSuccess() {
                     progressBar.invisible()
                 }

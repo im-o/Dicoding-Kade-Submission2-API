@@ -3,7 +3,6 @@ package com.stimednp.kadesubmission2.api
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.stimednp.kadesubmission2.BuildConfig
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -15,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
     val gson = GsonBuilder().setLenient().create()
-//    private val authInterceptor = Interceptor {chain ->
+    //    private val authInterceptor = Interceptor {chain ->
 //        val newUrl = chain.request().url()
 //            .newBuilder()
 //            .build()
@@ -39,6 +38,6 @@ object ApiClient {
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
 
-    val iServiceTsdb : IServiceTsdb = retrofit()
+    val iServiceTsdb: IServiceTsdb = retrofit()
         .create(IServiceTsdb::class.java)
 }

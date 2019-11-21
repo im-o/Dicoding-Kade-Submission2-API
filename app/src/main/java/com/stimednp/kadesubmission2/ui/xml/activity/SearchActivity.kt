@@ -93,6 +93,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     override fun onQueryTextSubmit(query: String?): Boolean {
         if (query != null) {
             clearData()
+            rv_search.adapter?.notifyDataSetChanged()
             searchEvent(query)
             textSearch = query
         }

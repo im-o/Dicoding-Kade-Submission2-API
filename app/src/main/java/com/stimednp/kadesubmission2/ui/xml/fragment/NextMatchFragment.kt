@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.stimednp.kadesubmission2.R
 import com.stimednp.kadesubmission2.api.ApiClient
 import com.stimednp.kadesubmission2.gone
+import com.stimednp.kadesubmission2.invisible
 import com.stimednp.kadesubmission2.model.EventsLeagues
 import com.stimednp.kadesubmission2.model.TeamsBadge
 import com.stimednp.kadesubmission2.ui.adapter.EventMatchAdapter
@@ -67,13 +68,16 @@ class NextMatchFragment : Fragment() {
     }
 
     private fun setIdTeam(events: ArrayList<EventsLeagues>, teamH: ArrayList<Int>, teamA: ArrayList<Int>) {
+        tv_loadnext.visible()
         val tsdbService = ApiClient.iServiceTsdb
         GlobalScope.launch(Dispatchers.Main) {
             val itemsH = ArrayList<TeamsBadge>()
             val itemsA = ArrayList<TeamsBadge>()
             for (i in events.indices) {
+                val strload = "${getString(R.string.str_loadmatch)} $i of ${events.size}"
                 val listIdHome = tsdbService.getDetailTeamH(teamH[i])
                 val listIdAway = tsdbService.getDetailTeamA(teamA[i])
+                tv_loadnext.text = strload
                 try {
                     val responseH = listIdHome.await()
                     val bodyH = responseH.body()
@@ -106,6 +110,7 @@ class NextMatchFragment : Fragment() {
 
     private fun disabelProgress() {
         progress_nextmatch.gone()
+        tv_loadnext.invisible()
     }
 
     private fun setAdapter(itemsE: ArrayList<EventsLeagues>, itemsH: ArrayList<TeamsBadge>, itemsA: ArrayList<TeamsBadge>) {

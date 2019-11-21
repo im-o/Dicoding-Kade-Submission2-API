@@ -58,7 +58,7 @@ class MainUI(val items: ArrayList<Leagues>) : AnkoComponent<MainActivity> {
                         setHasFixedSize(true)
                         layoutManager = LinearLayoutManager(context)
                         adapter = HomeAdapter(items) {
-//                            startActivity<DetailsActivity>()
+                            //                            startActivity<DetailsActivity>()
                             startActivity<DetailsActivity>(DetailsActivity.EXTRA_DATA to it)
                         }
                     }
