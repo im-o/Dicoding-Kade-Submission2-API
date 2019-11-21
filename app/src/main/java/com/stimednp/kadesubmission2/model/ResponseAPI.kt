@@ -69,6 +69,7 @@ data class EventsLeagues(
     var strAwayYellowCards: String?,
     var strAwayGoalDetails: String?,
     var strAwayLineupGoalkeeper: String?,
+    var strAwayLineupDefense: String?,
     var strAwayLineupMidfield: String?,
     var strAwayLineupForward: String?,
     var strAwayLineupSubstitutes: String?,

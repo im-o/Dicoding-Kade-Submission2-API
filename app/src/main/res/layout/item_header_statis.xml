@@ -19,6 +19,7 @@
         app:cardCornerRadius="@dimen/space_8">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@color/colorDivider"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -29,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/full_time"
+                android:textColor="@android:color/black"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -98,6 +100,7 @@
                 android:maxLines="1"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/textView4"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -107,7 +110,7 @@
                 tools:text="Orlando Magic" />
 
             <TextView
-                android:id="@+id/tv_scorea"
+                android:id="@+id/tv_ascore"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_8"
@@ -139,7 +142,7 @@
                 android:layout_height="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/imgv_ateam"
                 app:layout_constraintEnd_toEndOf="@+id/imgv_ateam"
-                app:layout_constraintStart_toEndOf="@+id/tv_scorea"
+                app:layout_constraintStart_toEndOf="@+id/tv_ascore"
                 app:layout_constraintTop_toTopOf="@+id/imgv_ateam" />
 
             <TextView
@@ -154,6 +157,7 @@
                 android:maxLines="1"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

@@ -13,7 +13,6 @@ import com.stimednp.kadesubmission2.invisible
 import com.stimednp.kadesubmission2.model.EventsLeagues
 import com.stimednp.kadesubmission2.model.TeamsBadge
 import com.stimednp.kadesubmission2.ui.xml.activity.DetailsEventActivity
-import com.stimednp.kadesubmission2.visible
 import kotlinx.android.synthetic.main.item_event_match.view.*
 import org.jetbrains.anko.startActivity
 
@@ -36,9 +35,11 @@ class EventMatchAdapter(
     override fun onBindViewHolder(holder: LastMatchViewHolder, position: Int) {
         holder.bindItem(items[position], badgesH[position], badgesA[position])
         holder.view.setOnClickListener() {
-            context.startActivity<DetailsEventActivity>()
-//            e("INIII","CLICCCCK X : ${items.get(position).idEvent}")
-//            e("INIII","CLICCCCK Y : ${badgesA.get(position).strTeamBadge}")
+            context.startActivity<DetailsEventActivity>(
+                DetailsEventActivity.EXTRA_DATA_EVENT to items[position],
+                DetailsEventActivity.EXTRA_BADGEH to badgesH[position],
+                DetailsEventActivity.EXTRA_BADGEA to badgesA[position]
+            )
         }
     }
 
@@ -46,7 +47,7 @@ class EventMatchAdapter(
         fun bindItem(itemsE: EventsLeagues?, badgesH: TeamsBadge?, badgesA: TeamsBadge?) {
             val urlimgH = "${badgesH?.strTeamBadge}/preview"
             val urlimgA = "${badgesA?.strTeamBadge}/preview"
-            val dateChange = CustomesUI.changeDateFormat("${itemsE?.dateEvent!!} ${itemsE.strTime}")
+            val dateChange = CustomesUI.changeDateFormat(itemsE?.dateEvent!!, itemsE.strTime!!)
 
             view.tv_league_sport.text = itemsE.strSport
             view.tv_strevent.text = itemsE.strEvent
@@ -55,6 +56,12 @@ class EventMatchAdapter(
             view.tv_away_score.text = itemsE.intAwayScore?.toString() ?: "-"
             view.tv_hometeam.text = itemsE.strHomeTeam
             view.tv_awayteam.text = itemsE.strAwayTeam
+            itemsE.intHomeScore ?: itemsE.intAwayScore ?: view.tv_ft.invisible()
+//            if (itemsE.intHomeScore == null && itemsE.intAwayScore == null) {
+//                view.tv_ft.invisible()
+//            } else {
+//                view.tv_ft.visible()
+//            }
 
             Picasso.get().load(urlimgH).into(view.imgv_hometeam, object : Callback {
                 override fun onSuccess() {
@@ -74,11 +81,8 @@ class EventMatchAdapter(
                     view.prog_tim_away.invisible()
                 }
             })
-            if (itemsE.intHomeScore == null && itemsE.intAwayScore == null) {
-                view.tv_ft.invisible()
-            } else {
-                view.tv_ft.visible()
-            }
+
+
         }
 
     }

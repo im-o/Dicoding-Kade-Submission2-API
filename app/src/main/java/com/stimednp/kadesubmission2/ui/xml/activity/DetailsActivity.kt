@@ -46,7 +46,7 @@ class DetailsActivity : AppCompatActivity(), View.OnClickListener {
         val url = "${items?.strBadge}/preview"
         tv_name_league.text = items?.strLeague
         tv_desc_league.text = items?.strDescriptionEN
-        Picasso.get().load(url).into(img_badge_league)
+        Picasso.get().load(url).into(img_badgeHb)
     }
 
     private fun loadDetailLeagues() {
