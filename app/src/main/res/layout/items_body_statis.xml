@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:paddingBottom="@dimen/space_6"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/space_6">
 
 
     <TextView
@@ -68,7 +68,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
-        app:cardBackgroundColor="@color/colorDivider"
+        app:cardBackgroundColor="@color/colorPrimary"
         app:cardCornerRadius="@dimen/space_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.0"
@@ -79,7 +79,7 @@
             android:id="@+id/img_badgeHb"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/space_8"
+            android:layout_margin="@dimen/space_3"
             android:contentDescription="@string/todo"
             android:scaleType="fitCenter"
             tools:src="@drawable/english_premier_league" />
@@ -114,7 +114,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
-        app:cardBackgroundColor="@color/colorDivider"
+        app:cardBackgroundColor="@color/colorPrimary"
         app:cardCornerRadius="@dimen/space_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
@@ -125,7 +125,7 @@
             android:id="@+id/img_badgeAb"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/space_8"
+            android:layout_margin="@dimen/space_3"
             android:contentDescription="@string/todo"
             android:scaleType="fitCenter"
             tools:src="@drawable/english_premier_league" />
@@ -163,7 +163,7 @@
         android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="Formation"
+        android:text="@string/formation"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
@@ -180,7 +180,7 @@
         android:layout_marginTop="16dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="Goals"
+        android:text="@string/goals"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
@@ -196,7 +196,7 @@
         android:layout_marginTop="16dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="Shots"
+        android:text="@string/shots"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
@@ -212,7 +212,7 @@
         android:layout_marginTop="16dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="Red Cards"
+        android:text="@string/red_cards"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
@@ -228,7 +228,7 @@
         android:layout_marginTop="16dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="Yellow Cards"
+        android:text="@string/yellow_cards"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
@@ -244,7 +244,7 @@
         android:layout_marginTop="16dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="Lineup Goal keeper"
+        android:text="@string/goal_keeper"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
@@ -260,7 +260,7 @@
         android:layout_marginTop="16dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="Lineup Defense"
+        android:text="@string/defense"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
@@ -277,7 +277,7 @@
         android:layout_marginTop="16dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="Lineup Midfield"
+        android:text="@string/midfield"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
@@ -294,7 +294,7 @@
         android:layout_marginTop="16dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="Lineup Forward"
+        android:text="@string/forward"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
@@ -311,7 +311,7 @@
         android:layout_marginTop="16dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="Lineup Substitutes"
+        android:text="@string/substitutes"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
@@ -328,7 +328,7 @@
         android:layout_marginTop="16dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="Goal Details"
+        android:text="@string/goal_details"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
@@ -344,7 +344,7 @@
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Formation"
+        tools:text="@string/formation"
         android:textAlignment="textStart"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
@@ -358,140 +358,140 @@
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Goals"
         android:textAlignment="textStart"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.004"
         app:layout_constraintStart_toStartOf="@+id/guidelinev1"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+        tools:text="Goals" />
 
     <TextView
         android:id="@+id/tv_shoth"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Shots"
         android:textAlignment="textStart"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev1"
-        app:layout_constraintTop_toTopOf="@+id/textView5" />
+        app:layout_constraintTop_toTopOf="@+id/textView5"
+        tools:text="Shots" />
 
     <TextView
         android:id="@+id/tv_credh"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Red Cards"
         android:textAlignment="textStart"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev1"
-        app:layout_constraintTop_toTopOf="@+id/textView6" />
+        app:layout_constraintTop_toTopOf="@+id/textView6"
+        tools:text="Red Cards" />
 
     <TextView
         android:id="@+id/tv_cyellowh"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Yellow Cards"
         android:textAlignment="textStart"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev1"
-        app:layout_constraintTop_toTopOf="@+id/textView7" />
+        app:layout_constraintTop_toTopOf="@+id/textView7"
+        tools:text="Yellow Cards" />
 
     <TextView
         android:id="@+id/tv_gkeeperh"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Lineup Goal keeper"
         android:textAlignment="textStart"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev1"
-        app:layout_constraintTop_toTopOf="@+id/textView9" />
+        app:layout_constraintTop_toTopOf="@+id/textView9"
+        tools:text="Lineup Goal keeper" />
 
     <TextView
         android:id="@+id/tv_defenseh"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Lineup Defense"
         android:textAlignment="textStart"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev1"
-        app:layout_constraintTop_toTopOf="@+id/textView10" />
+        app:layout_constraintTop_toTopOf="@+id/textView10"
+        tools:text="Lineup Defense" />
 
     <TextView
         android:id="@+id/tv_midh"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Lineup Midfield"
         android:textAlignment="textStart"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev1"
-        app:layout_constraintTop_toTopOf="@+id/textView11" />
+        app:layout_constraintTop_toTopOf="@+id/textView11"
+        tools:text="Lineup Midfield" />
 
     <TextView
         android:id="@+id/tv_forwardh"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Lineup Forward"
         android:textAlignment="textStart"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev1"
-        app:layout_constraintTop_toTopOf="@+id/textView13" />
+        app:layout_constraintTop_toTopOf="@+id/textView13"
+        tools:text="Lineup Forward" />
 
     <TextView
         android:id="@+id/tv_subtih"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Lineup Substitutes"
         android:textAlignment="textStart"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev1"
-        app:layout_constraintTop_toTopOf="@+id/textView14" />
+        app:layout_constraintTop_toTopOf="@+id/textView14"
+        tools:text="Lineup Substitutes" />
 
     <TextView
         android:id="@+id/tv_dgoalh"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Goal Details"
         android:textAlignment="textStart"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev1"
-        app:layout_constraintTop_toTopOf="@+id/textView3" />
+        app:layout_constraintTop_toTopOf="@+id/textView3"
+        tools:text="Goal Details" />
 
 
     <TextView
@@ -499,154 +499,154 @@
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Formation"
         android:textAlignment="textEnd"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev3"
-        app:layout_constraintTop_toTopOf="@+id/textView15" />
+        app:layout_constraintTop_toTopOf="@+id/textView15"
+        tools:text="@string/formation" />
 
     <TextView
         android:id="@+id/tv_goala"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Goals"
         android:textAlignment="textEnd"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev3"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+        tools:text="Goals" />
 
     <TextView
         android:id="@+id/tv_shota"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Shots"
         android:textAlignment="textEnd"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev3"
-        app:layout_constraintTop_toTopOf="@+id/textView5" />
+        app:layout_constraintTop_toTopOf="@+id/textView5"
+        tools:text="Shots" />
 
     <TextView
         android:id="@+id/tv_creda"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Red Cards"
         android:textAlignment="textEnd"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev3"
-        app:layout_constraintTop_toTopOf="@+id/textView6" />
+        app:layout_constraintTop_toTopOf="@+id/textView6"
+        tools:text="Red Cards" />
 
     <TextView
         android:id="@+id/tv_cyellowa"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Yellow Cards"
         android:textAlignment="textEnd"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev3"
-        app:layout_constraintTop_toTopOf="@+id/textView7" />
+        app:layout_constraintTop_toTopOf="@+id/textView7"
+        tools:text="Yellow Cards" />
 
     <TextView
         android:id="@+id/tv_gkeepera"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Lineup Goal keeper"
         android:textAlignment="textEnd"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev3"
-        app:layout_constraintTop_toTopOf="@+id/textView9" />
+        app:layout_constraintTop_toTopOf="@+id/textView9"
+        tools:text="Lineup Goal keeper" />
 
     <TextView
         android:id="@+id/tv_defensea"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Lineup Defense"
         android:textAlignment="textEnd"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev3"
-        app:layout_constraintTop_toTopOf="@+id/textView10" />
+        app:layout_constraintTop_toTopOf="@+id/textView10"
+        tools:text="Lineup Defense" />
 
     <TextView
         android:id="@+id/tv_mida"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Lineup Midfield"
         android:textAlignment="textEnd"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev3"
-        app:layout_constraintTop_toTopOf="@+id/textView11" />
+        app:layout_constraintTop_toTopOf="@+id/textView11"
+        tools:text="Lineup Midfield" />
 
     <TextView
         android:id="@+id/tv_forwarda"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Lineup Forward"
         android:textAlignment="textEnd"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev3"
-        app:layout_constraintTop_toTopOf="@+id/textView13" />
+        app:layout_constraintTop_toTopOf="@+id/textView13"
+        tools:text="Lineup Forward" />
 
     <TextView
         android:id="@+id/tv_subtia"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Lineup Substitutes"
         android:textAlignment="textEnd"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev3"
-        app:layout_constraintTop_toTopOf="@+id/textView14" />
+        app:layout_constraintTop_toTopOf="@+id/textView14"
+        tools:text="Lineup Substitutes" />
 
     <TextView
         android:id="@+id/tv_dgoala"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Goal Details"
         android:textAlignment="textEnd"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/size_8"
         app:layout_constraintEnd_toStartOf="@+id/guidelinev4"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guidelinev3"
-        app:layout_constraintTop_toTopOf="@+id/textView3" />
+        app:layout_constraintTop_toTopOf="@+id/textView3"
+        tools:text="Goal Details" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelinev1"

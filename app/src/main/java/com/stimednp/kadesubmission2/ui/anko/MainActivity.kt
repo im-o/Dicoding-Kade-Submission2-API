@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
             } catch (er: Exception) {
                 runOnUiThread {
                     disableProgress()
-                    toast("Something error, check your connection")
+                    toast(getString(R.string.no_ineter))
                 }
             }
         }
@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
             } catch (er: Exception) {
                 runOnUiThread {
                     disableProgress()
-                    toast("Something error, check your connection")
+                    toast(getString(R.string.no_ineter))
                 }
             }
         }
@@ -135,7 +135,7 @@ class MainActivity : AppCompatActivity() {
         if (leagueAddto.size >= sizeListId && sizeListId != 0) {
             leagueList.clear()
             setAdapter(leagueAddto)
-            toast("No more leagues, All data is loaded")
+            toast(getString(R.string.nomore_data))
             disableProgress()
         } else {
             getIdListLeague()

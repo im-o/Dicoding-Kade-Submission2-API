@@ -4,13 +4,16 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log.e
 import android.view.Menu
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.stimednp.kadesubmission2.CustomesUI.showProgress
+import com.stimednp.kadesubmission2.CustomesUI.showProgressDialog
 import com.stimednp.kadesubmission2.R
 import com.stimednp.kadesubmission2.R.color.*
 import com.stimednp.kadesubmission2.api.ApiClient
+import com.stimednp.kadesubmission2.invisible
 import com.stimednp.kadesubmission2.model.EventsLeagues
 import com.stimednp.kadesubmission2.model.TeamsBadge
 import com.stimednp.kadesubmission2.ui.adapter.EventMatchAdapter
@@ -19,6 +22,7 @@ import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import org.jetbrains.anko.find
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.toast
 
@@ -28,6 +32,8 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     var itemTeamsA = ArrayList<TeamsBadge>()
     var itemSave = ArrayList<EventsLeagues>()
     var textSearch: String? = null
+    lateinit var tvProgress: TextView
+    lateinit var strProgress: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,22 +45,30 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         swipe_search.onRefresh {
             if (!textSearch.equals(null)) {
                 if (itemSave.equals(itemEvents)) {
-                    toast("No more match, all data is loaded!")
+                    toast(getString(R.string.nomore_data))
                     disabelProgress()
                 } else {
                     searchEvent(textSearch!!)
                 }
             } else {
-                toast("No data to search...")
+                toast(getString(R.string.str_search))
                 disabelProgress()
             }
         }
     }
 
     private fun initial() {
-        val layoutManager = LinearLayoutManager(this)
-        rv_search.layoutManager = layoutManager
+        showProgressDialog(this)
+        tvProgress = showProgress.find(R.id.tv_progress_cust)
+        strProgress = getString(R.string.str_loadmatch)
+
+        rv_search.layoutManager = LinearLayoutManager(this)
         rv_search.adapter = EventMatchAdapter(this, itemEvents, itemTeamsH, itemTeamsA)
+    }
+
+    private fun showDataProgress() {
+        tvProgress.text = strProgress
+        showProgress.show()
     }
 
     private fun setToolbar() {
@@ -78,7 +92,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         if (query != null) {
-            toast(query)
+            clearData()
             searchEvent(query)
             textSearch = query
         }
@@ -86,61 +100,67 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-//        if (newText != null) {
-//            toast(newText)
-//            searchEvent(newText)
-//            textSearch = newText
-//        }
         return false
     }
 
     private fun searchEvent(strEvent: String) {
         enableProgress()
-        toast("CARRRIIII DATA")
         val tsdbService = ApiClient.iServiceTsdb
         GlobalScope.launch(Dispatchers.Main) {
             val listEvents = tsdbService.getSearchEvent(strEvent)
             try {
                 val responseE = listEvents.await()
                 val resBodyE = responseE.body()
-                e("INIII", "SEARRCHHH $strEvent : ${resBodyE?.events?.size}")
-                savetoArrays(resBodyE?.events!!)
+                savetoArrays(resBodyE?.event!!)
             } catch (er: Exception) {
-                e("INIII", "ERRRROR $er")
+                e("INIII", "ERRROR SEARCH 1 $er")
                 runOnUiThread {
                     disabelProgress()
-                    if (er.message == KotlinNullPointerException().message) {
-                        enableNodata()
-                    }
+                    enableNodata()
+                    clearData()
                 }
             }
         }
     }
 
     @SuppressLint("DefaultLocale")
-    private fun savetoArrays(events: ArrayList<EventsLeagues>) {
+    private fun savetoArrays(events: ArrayList<EventsLeagues>?) {
+        val eventItems = ArrayList<EventsLeagues>()
         val badgeH = ArrayList<Int>()
         val badgeA = ArrayList<Int>()
 
-        for (i in events.indices) {
+        for (i in events?.indices!!) {
+            val idH = events[i].idHomeTeam
+            val idA = events[i].idAwayTeam
+            val ev = events[i]
             val sportSoccer = events.get(i).strSport?.toLowerCase()
-            val idH = events[i].idHomeTeam!!
-            val idA = events[i].idAwayTeam!!
+
             if (sportSoccer == "soccer") {
-                badgeH.add(idH)
-                badgeA.add(idA)
+                badgeH.add(idH as Int)
+                badgeA.add(idA as Int)
+                eventItems.addAll(listOf(ev))
             }
         }
-        setIdTeam(events, badgeH, badgeA)
+        if (eventItems.size > 0) {
+            setIdTeam(eventItems, badgeH, badgeA)
+        } else {
+            toast(getString(R.string.str_nomatch))
+            disabelProgress()
+            enableNodata()
+        }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setIdTeam(events: ArrayList<EventsLeagues>, teamH: ArrayList<Int>, teamA: ArrayList<Int>) {
+        showDataProgress()
         val tsdbService = ApiClient.iServiceTsdb
         GlobalScope.launch(Dispatchers.Main) {
             val itemsH = ArrayList<TeamsBadge>()
             val itemsA = ArrayList<TeamsBadge>()
             if (events.size > 0) {
                 for (i in events.indices) {
+                    val strPrg = "$strProgress $i of ${events.size}"
+                    tvProgress.text = strPrg
                     try {
                         val listIdHome = tsdbService.getDetailTeamH(teamH[i])
                         val listIdAway = tsdbService.getDetailTeamA(teamA[i])
@@ -151,7 +171,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                         itemsH.addAll(bodyH?.teams!!)
                         itemsA.addAll(bodyA?.teams!!)
                     } catch (er: Exception) {
-                        e("INIII", "ERRRRORR 2 $er")
+                        e("INIII", "ERRROR SEARCH 2 $er")
                         runOnUiThread { disabelProgress() }
                     }
                 }
@@ -159,31 +179,31 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             } else {
                 enableNodata()
                 disabelProgress()
+                clearData()
             }
         }
     }
 
 
     private fun setAdapter(itemsE: ArrayList<EventsLeagues>, itemsH: ArrayList<TeamsBadge>, itemsA: ArrayList<TeamsBadge>) {
-        itemEvents.clear()
-        itemTeamsH.clear()
-        itemTeamsA.clear()
-        itemSave.clear()
-
+        clearData()
         itemEvents.addAll(itemsE)
         itemTeamsH.addAll(itemsH)
         itemTeamsA.addAll(itemsA)
         itemSave.addAll(itemsE)
-        toast("CARIII : ${itemsE.size}")
         if (rv_search.adapter != null) {
             rv_search.adapter?.notifyDataSetChanged()
         }
+        tv_empty_datas.invisible()
         disabelProgress()
     }
 
     private fun disabelProgress() {
         if (swipe_search.isRefreshing) {
             swipe_search.isRefreshing = false
+        }
+        if (showProgress.isShowing) {
+            showProgress.dismiss()
         }
     }
 
@@ -194,8 +214,13 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     }
 
     private fun enableNodata() {
-        if (tv_empty_datas.isVisible) {
-            tv_empty_datas.visible()
-        }
+        tv_empty_datas.visible()
+    }
+
+    private fun clearData() {
+        itemEvents.clear()
+        itemTeamsH.clear()
+        itemTeamsA.clear()
+        itemSave.clear()
     }
 }

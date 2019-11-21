@@ -26,7 +26,7 @@ import org.jetbrains.anko.support.v4.runOnUiThread
  * A simple [Fragment] subclass.
  */
 class LastMatchFragment : Fragment() {
-    var idLeague: Int? = 0
+    var idLeague: String? = null
     var itemEvents = ArrayList<EventsLeagues>()
     var itemTeamsH = ArrayList<TeamsBadge>()
     var itemTeamsA = ArrayList<TeamsBadge>()
@@ -39,7 +39,7 @@ class LastMatchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val dataItems = DetailsActivity.items
-        idLeague = dataItems?.idLeague?.toInt()
+        idLeague = dataItems?.idLeague!!
         setIdEvent(idLeague!!)
 
         val layoutManager = LinearLayoutManager(context)
@@ -48,7 +48,7 @@ class LastMatchFragment : Fragment() {
 
     }
 
-    private fun setIdEvent(idLeague: Int) {
+    private fun setIdEvent(idLeague: String) {
         val tsdbService = ApiClient.iServiceTsdb
         GlobalScope.launch(Dispatchers.Main) {
             val listIdEvents = tsdbService.getPrevMatch(idLeague)
@@ -57,7 +57,7 @@ class LastMatchFragment : Fragment() {
                 val resBodyE = responseE.body()
                 savetoArrays(resBodyE?.events!!)
             } catch (e: Exception) {
-                e("INIII", "ERRRROR $e")
+                e("INIII", "ERRROR LAST 1 $e")
                 runOnUiThread {
                     disabelProgress()
                     if (e.message == KotlinNullPointerException().message) {
@@ -84,7 +84,7 @@ class LastMatchFragment : Fragment() {
                     itemsH.addAll(bodyH?.teams!!)
                     itemsA.addAll(bodyA?.teams!!)
                 } catch (e: Exception) {
-                    e("INIII", "ERRRRORR 2 $e")
+                    e("INIII", "ERRROR LAST 2 $e")
                     runOnUiThread { disabelProgress() }
                 }
             }
@@ -118,7 +118,7 @@ class LastMatchFragment : Fragment() {
         itemTeamsA.addAll(itemsA)
         if (rv_lastmatch != null) {
             rv_lastmatch.adapter?.notifyDataSetChanged()
-        } else if (idLeague != 0 && idLeague != null) {
+        } else if (idLeague != null) {
             setIdEvent(idLeague!!)
         }
         disabelProgress()

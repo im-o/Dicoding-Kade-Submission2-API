@@ -57,11 +57,6 @@ class EventMatchAdapter(
             view.tv_hometeam.text = itemsE.strHomeTeam
             view.tv_awayteam.text = itemsE.strAwayTeam
             itemsE.intHomeScore ?: itemsE.intAwayScore ?: view.tv_ft.invisible()
-//            if (itemsE.intHomeScore == null && itemsE.intAwayScore == null) {
-//                view.tv_ft.invisible()
-//            } else {
-//                view.tv_ft.visible()
-//            }
 
             Picasso.get().load(urlimgH).into(view.imgv_hometeam, object : Callback {
                 override fun onSuccess() {

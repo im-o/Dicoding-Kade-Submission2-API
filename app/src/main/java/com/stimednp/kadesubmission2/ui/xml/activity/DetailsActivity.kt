@@ -32,7 +32,6 @@ class DetailsActivity : AppCompatActivity(), View.OnClickListener {
         setToolbar()
         showData()
         setupViewPager()
-        loadDetailLeagues()
     }
 
     private fun initClick() {
@@ -47,10 +46,6 @@ class DetailsActivity : AppCompatActivity(), View.OnClickListener {
         tv_name_league.text = items?.strLeague
         tv_desc_league.text = items?.strDescriptionEN
         Picasso.get().load(url).into(img_badgeHb)
-    }
-
-    private fun loadDetailLeagues() {
-
     }
 
     private fun setToolbar() {
@@ -72,10 +67,6 @@ class DetailsActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.option_search, menu)
-//        val searchItem = menu?.findItem(R.id.item_search)
-//        val searchView = searchItem?.actionView as SearchView
-//        searchView.queryHint = "Search"
-//        searchView.setOnQueryTextListener(this)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -85,14 +76,6 @@ class DetailsActivity : AppCompatActivity(), View.OnClickListener {
         }
         return super.onOptionsItemSelected(item)
     }
-
-//    override fun onQueryTextSubmit(query: String?): Boolean {
-//        return true
-//    }
-//
-//    override fun onQueryTextChange(newText: String?): Boolean {
-//        return true
-//    }
 
     override fun onClick(id: View?) {
         if (id == tv_web) {
@@ -108,7 +91,7 @@ class DetailsActivity : AppCompatActivity(), View.OnClickListener {
 
     fun goUri(url: String?) {
         if (url == "") {
-            toast("Nothing link url")
+            toast(getString(R.string.str_nourl))
         } else {
             try {
                 val uri = Uri.parse("http://$url")

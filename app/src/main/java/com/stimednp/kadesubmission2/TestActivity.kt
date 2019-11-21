@@ -19,13 +19,36 @@ class TestActivity : AppCompatActivity() {
 
     private fun search() {
         val tsdb = ApiClient.iServiceTsdb
-        GlobalScope.launch(Dispatchers.Main){
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val response = tsdb.getSearchEvent("B")
+//            withContext(Dispatchers.Main){
+//                try {
+//                    if (response.isCompleted){
+//                        toast("successs")
+//                        val res = response.await()
+//                        val body = res.body()
+//                        toast("HASIL : ${body?.events?.size}")
+//                    }else{
+//                        toast("not completes error : ${response.hashCode()}")
+//                    }
+//                }catch (er: HttpException){
+//                    toast("errrorrr : ${er.message()}")
+//                }catch (er: Throwable){
+//                    toast("errorr : ${er.message}")
+//                }
+//            }
+//        }
+        GlobalScope.launch(Dispatchers.Main) {
             val listData = tsdb.getSearchEvent("B")
-            val response = listData.await()
-            val resBodey = response.body()
-            toast("HASILLLLL : ${resBodey?.events?.size}")
-            toast("HASILLLLL BODY : ${resBodey}")
-            e("INIII","INII HASIL : ${resBodey?.events?.size}")
+            try {
+                val response = listData.await()
+                val resBodey = response.body()
+                toast("HASILLLLL : ${resBodey?.event?.size}")
+                toast("HASILLLLL BODY : ${resBodey?.event?.get(0)?.idHomeTeam}")
+                e("INIII", "INII HASIL : ${resBodey?.event?.size}")
+            } catch (e: Exception) {
+                toast("error : ${e.message}")
+            }
         }
     }
 }

@@ -18,8 +18,12 @@ class ResponseEvents {
 class ResponseTeamsH {
     var teams = ArrayList<TeamsBadge>()
 }
+
 class ResponseTeamsA {
     var teams = ArrayList<TeamsBadge>()
+}
+class ResponseSearch{
+    var event = ArrayList<EventsLeagues>()
 }
 
 @Parcelize
@@ -88,4 +92,4 @@ data class EventsLeagues(
 data class TeamsBadge(
     var idTeam: Int?,
     var strTeamBadge: String?
-    ) : Parcelable
+) : Parcelable

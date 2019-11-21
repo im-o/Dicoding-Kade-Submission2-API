@@ -37,7 +37,7 @@ class DetailsEventActivity : AppCompatActivity() {
         setSupportActionBar(toolbar_statis)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        toolbar_statis.setTitle(R.string.app_title)
+        toolbar_statis.setTitle(R.string.app_detail_match)
         toolbar_statis.setNavigationIcon(R.drawable.ic_keyboard_backspace_black_24dp)
         toolbar_statis.setNavigationOnClickListener { finish() }
     }

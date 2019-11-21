@@ -26,7 +26,7 @@ import org.jetbrains.anko.support.v4.runOnUiThread
  * A simple [Fragment] subclass.
  */
 class NextMatchFragment : Fragment() {
-    var idLeague: Int? = 0
+    var idLeague: String? = null
     var itemEvents = ArrayList<EventsLeagues>()
     var itemTeamsH = ArrayList<TeamsBadge>()
     var itemTeamsA = ArrayList<TeamsBadge>()
@@ -38,7 +38,7 @@ class NextMatchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val dataItems = DetailsActivity.items
-        idLeague = dataItems?.idLeague?.toInt()!!
+        idLeague = dataItems?.idLeague!!
         setIdEvent(idLeague!!)
 
         val layoutManager = LinearLayoutManager(context)
@@ -46,7 +46,7 @@ class NextMatchFragment : Fragment() {
         rv_nextmatch.adapter = EventMatchAdapter(context!!, itemEvents, itemTeamsH, itemTeamsA)
     }
 
-    private fun setIdEvent(idLeague: Int) {
+    private fun setIdEvent(idLeague: String) {
         val tsdbService = ApiClient.iServiceTsdb
         GlobalScope.launch(Dispatchers.Main) {
             val listIdEvents = tsdbService.getNextMatch(idLeague)
@@ -55,7 +55,7 @@ class NextMatchFragment : Fragment() {
                 val resBodyE = responseE.body()
                 savetoArrays(resBodyE?.events!!)
             } catch (er: Exception) {
-                e("INIII", "ERRRROR $er")
+                e("INIII", "ERRROR NEXT 1 $er")
                 if (er.message == KotlinNullPointerException().message) {
                     runOnUiThread {
                         tv_empty_nextmatch.visible()
@@ -82,7 +82,7 @@ class NextMatchFragment : Fragment() {
                     itemsH.addAll(bodyH?.teams!!)
                     itemsA.addAll(bodyA?.teams!!)
                 } catch (er: Exception) {
-                    e("INIII", "ERRRRORR 2 $er")
+                    e("INIII", "ERRROR NEXT 2 $er")
                     runOnUiThread { disabelProgress() }
                 }
             }
@@ -116,7 +116,7 @@ class NextMatchFragment : Fragment() {
         itemTeamsA.addAll(itemsA)
         if (rv_nextmatch.adapter != null) {
             rv_nextmatch.adapter?.notifyDataSetChanged()
-        } else if (idLeague != 0) {
+        } else if (idLeague != null) {
             setIdEvent(idLeague!!)
         }
         disabelProgress()
