@@ -104,7 +104,7 @@ class NextMatchFragment : Fragment() {
     }
 
     private fun disabelProgress() {
-        progress_nextmatch.gone()
+        if (progress_nextmatch != null) progress_nextmatch.gone()
     }
 
     private fun setAdapter(itemsE: ArrayList<EventsLeagues>, itemsH: ArrayList<TeamsBadge>, itemsA: ArrayList<TeamsBadge>) {
@@ -113,11 +113,7 @@ class NextMatchFragment : Fragment() {
         itemEvents.addAll(itemsE)
         itemTeamsH.addAll(itemsH)
         itemTeamsA.addAll(itemsA)
-        if (rv_nextmatch != null) {
-            rv_nextmatch.adapter?.notifyDataSetChanged()
-        } else if (idLeague != null) {
-            setIdEvent(idLeague!!)
-        }
+        if (rv_nextmatch != null) rv_nextmatch.adapter?.notifyDataSetChanged() else if (idLeague != null) setIdEvent(idLeague!!)
         disabelProgress()
     }
 }
