@@ -134,7 +134,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             val idH = events[i].idHomeTeam
             val idA = events[i].idAwayTeam
             val ev = events[i]
-            val sportSoccer = events.get(i).strSport?.toLowerCase()
+            val sportSoccer = events[i].strSport?.toLowerCase()
 
             if (sportSoccer == "soccer") {
                 badgeH.add(idH as Int)

@@ -3,6 +3,7 @@ package com.stimednp.kadesubmission2.api
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.stimednp.kadesubmission2.BuildConfig
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -14,18 +15,19 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
     val gson = GsonBuilder().setLenient().create()
-    //    private val authInterceptor = Interceptor {chain ->
-//        val newUrl = chain.request().url()
-//            .newBuilder()
-//            .build()
-//        val newRequest = chain.request()
-//            .newBuilder()
-//            .url(newUrl)
-//            .build()
-//
-//        chain.proceed(newRequest)
-//    }
-    val interceptor = HttpLoggingInterceptor().setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE)
+        private val interceptor = Interceptor {chain ->
+        val newUrl = chain.request().url()
+            .newBuilder()
+            .build()
+        val newRequest = chain.request()
+            .newBuilder()
+            .url(newUrl)
+            .build()
+
+        chain.proceed(newRequest)
+    }
+    //for logging
+    //val interceptor = HttpLoggingInterceptor().setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE)
 
     private val tsdbClient = OkHttpClient().newBuilder()
         .addInterceptor(interceptor)

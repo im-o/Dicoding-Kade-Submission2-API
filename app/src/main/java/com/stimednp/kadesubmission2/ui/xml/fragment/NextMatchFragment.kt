@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.stimednp.kadesubmission2.R
 import com.stimednp.kadesubmission2.api.ApiClient
 import com.stimednp.kadesubmission2.gone
-import com.stimednp.kadesubmission2.invisible
 import com.stimednp.kadesubmission2.model.EventsLeagues
 import com.stimednp.kadesubmission2.model.TeamsBadge
 import com.stimednp.kadesubmission2.ui.adapter.EventMatchAdapter
@@ -41,7 +40,6 @@ class NextMatchFragment : Fragment() {
         val dataItems = DetailsActivity.items
         idLeague = dataItems?.idLeague!!
         setIdEvent(idLeague!!)
-
         val layoutManager = LinearLayoutManager(context)
         rv_nextmatch.layoutManager = layoutManager
         rv_nextmatch.adapter = EventMatchAdapter(context!!, itemEvents, itemTeamsH, itemTeamsA)
@@ -68,16 +66,13 @@ class NextMatchFragment : Fragment() {
     }
 
     private fun setIdTeam(events: ArrayList<EventsLeagues>, teamH: ArrayList<Int>, teamA: ArrayList<Int>) {
-        tv_loadnext.visible()
         val tsdbService = ApiClient.iServiceTsdb
         GlobalScope.launch(Dispatchers.Main) {
             val itemsH = ArrayList<TeamsBadge>()
             val itemsA = ArrayList<TeamsBadge>()
             for (i in events.indices) {
-                val strload = "${getString(R.string.str_loadmatch)} $i of ${events.size}"
                 val listIdHome = tsdbService.getDetailTeamH(teamH[i])
                 val listIdAway = tsdbService.getDetailTeamA(teamA[i])
-                tv_loadnext.text = strload
                 try {
                     val responseH = listIdHome.await()
                     val bodyH = responseH.body()
@@ -99,8 +94,8 @@ class NextMatchFragment : Fragment() {
         val badgeA = ArrayList<Int>()
 
         for (i in events.indices) {
-            val teamH = events.get(i).idHomeTeam
-            val teamA = events.get(i).idAwayTeam
+            val teamH = events[i].idHomeTeam
+            val teamA = events[i].idAwayTeam
 
             badgeH.add(teamH!!)
             badgeA.add(teamA!!)
@@ -110,7 +105,6 @@ class NextMatchFragment : Fragment() {
 
     private fun disabelProgress() {
         progress_nextmatch.gone()
-        tv_loadnext.invisible()
     }
 
     private fun setAdapter(itemsE: ArrayList<EventsLeagues>, itemsH: ArrayList<TeamsBadge>, itemsA: ArrayList<TeamsBadge>) {
@@ -119,12 +113,11 @@ class NextMatchFragment : Fragment() {
         itemEvents.addAll(itemsE)
         itemTeamsH.addAll(itemsH)
         itemTeamsA.addAll(itemsA)
-        if (rv_nextmatch.adapter != null) {
+        if (rv_nextmatch != null) {
             rv_nextmatch.adapter?.notifyDataSetChanged()
         } else if (idLeague != null) {
             setIdEvent(idLeague!!)
         }
         disabelProgress()
     }
-
 }

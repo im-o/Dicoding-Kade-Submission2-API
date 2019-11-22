@@ -78,14 +78,11 @@ class DetailsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(id: View?) {
-        if (id == tv_web) {
-            goUri(items?.strWebsite)
-        } else if (id == tv_fb) {
-            goUri(items?.strFacebook)
-        } else if (id == tv_twit) {
-            goUri(items?.strTwitter)
-        } else if (id == tv_yt) {
-            goUri(items?.strYoutube)
+        when(id){
+            tv_web -> goUri(items?.strWebsite)
+            tv_fb -> goUri(items?.strFacebook)
+            tv_twit -> goUri(items?.strTwitter)
+            tv_yt -> goUri(items?.strYoutube)
         }
     }
 

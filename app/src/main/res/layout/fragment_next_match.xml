@@ -36,18 +36,4 @@
         android:textColor="@color/colorDividerDark"
         android:textStyle="bold"
         android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/tv_loadnext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="@dimen/space_55"
-        android:padding="@dimen/space_32"
-        tools:text="@string/str_loadmatch"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="bold"
-        android:visibility="invisible" />
 </RelativeLayout>

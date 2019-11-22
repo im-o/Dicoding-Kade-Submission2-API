@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity() {
     private fun setById(leagues: ArrayList<Leagues>) {
         val listIdLeagues: MutableList<Int> = ArrayList()
         for (i in leagues.indices) {
-            val sportSoccer = leagues.get(i).strSport?.toLowerCase()
+            val sportSoccer = leagues[i].strSport?.toLowerCase()
             val id = leagues[i].idLeague!!.toInt()
             if (sportSoccer == "soccer") {
                 listIdLeagues.add(id)
@@ -126,7 +126,7 @@ class MainActivity : AppCompatActivity() {
 //            listIdLeagues.add(id)
 //        }
         for (i in listIdLeagues.indices) {
-            val id = listIdLeagues.get(i)
+            val id = listIdLeagues[i]
             getDataById(id)
         }
     }
