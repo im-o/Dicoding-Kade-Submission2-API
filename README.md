@@ -6,22 +6,22 @@
 **Main Page**
 ---
 
-<img src="https://github.com/im-o/MyResource/blob/master/image-kade-sub2/home.jpeg" width="50%" height="50%">
+<img src="https://raw.githubusercontent.com/im-o/MyResource/master/image-kade-sub2/home.jpeg" width="50%" height="50%">
 
 
 **Detail Leagues**
 ---
 
-<img src="https://github.com/im-o/MyResource/blob/master/image-kade-sub2/prev-next.jpeg" width="50%" height="50%">
+<img src="https://raw.githubusercontent.com/im-o/MyResource/master/image-kade-sub2/prev-next.jpeg" width="50%" height="50%">
 
 
 **Search Event Match**
 ---
 
-<img src="https://github.com/im-o/MyResource/blob/master/image-kade-sub2/search.jpeg" width="50%" height="50%">
+<img src="https://raw.githubusercontent.com/im-o/MyResource/master/image-kade-sub2/search.jpeg" width="50%" height="50%">
 
 
 **Detail Event Match**
 ---
 
-<img src="https://github.com/im-o/MyResource/blob/master/image-kade-sub2/details.jpeg" width="50%" height="50%">
+<img src="https://raw.githubusercontent.com/im-o/MyResource/master/image-kade-sub2/details.jpeg" width="50%" height="50%">
