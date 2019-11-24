@@ -1,5 +1,7 @@
 **boleh digunakan sebagai bahan acuan untuk KADE Submission 2 dari [dicoding](https://www.dicoding.com/academies/55/tutorials/1588?from=1669), tapi tidak untuk di submit mentah.**
 
+**modul by [dicoding](https://www.dicoding.com/academies/55/tutorials/1588?from=1669) & [IDcamp Indosat](https://idcamp.indosatooredoo.com/)**
+
 # About App
 
 
